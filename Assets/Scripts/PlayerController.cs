@@ -39,7 +39,7 @@ public class Player
     }
 }
 
-public class CharacterController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     //Player One and Player Two
     [SerializeField]
@@ -60,7 +60,7 @@ public class CharacterController : MonoBehaviour
     {
         //Update both players
         PlayerOne.Update(new Vector3(0, 1, 0));
-        PlayerTwo.Update(new Vector3(0, 1, 0));
+        //PlayerTwo.Update(new Vector3(0, 1, 0));
     }
 
     //Initilize the players with components
