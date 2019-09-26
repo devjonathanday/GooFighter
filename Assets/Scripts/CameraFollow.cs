@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform followTarget;
-    public float offsetHeight;
-    public float lookAngle;
-    public float rotSpeed;
-    public float distance;
-
-    // Update is called once per frame
+    public bool active;
+    public Transform focusA, focusB;
+    public Vector3 offset;
+    public float moveSpeed;
+    
     void LateUpdate()
     {
-        // 3D Camera
-        transform.rotation = Quaternion.Lerp(transform.rotation, followTarget.rotation, 1);
-        transform.eulerAngles = new Vector3(lookAngle, transform.eulerAngles.y + (Input.GetKey(KeyCode.E) ? 180 : 0), transform.eulerAngles.z);
-        transform.position = followTarget.position - (transform.forward * distance) + Vector3.up * offsetHeight;
-
-        // 2D Camera
-        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(followTarget.position - transform.position), 1);
-        //transform.eulerAngles = new Vector3(lookAngle, transform.eulerAngles.y, transform.eulerAngles.z);
-        //transform.position = followTarget.position + offset;
+        if (active)
+        {
+            Vector3 midPoint = (focusA.position + focusB.position) / 2;
+            transform.position = Vector3.Lerp(transform.position, midPoint + offset, moveSpeed);
+        }
     }
 }
