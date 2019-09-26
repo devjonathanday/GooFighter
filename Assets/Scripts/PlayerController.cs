@@ -12,6 +12,7 @@ public class Player
 
     [Header("Bones")]
     public GameObject Head;
+    public GameObject Center;
     public GameObject RightArm;
     public GameObject LeftArm;
 
@@ -27,15 +28,24 @@ public class Player
                 RB = Object.AddComponent<Rigidbody>();
             }
         }
-        Head.AddComponent<Rigidbody>();
     }
-    public void Update(Vector3 _HeadUpV)
+    public void Update(Vector3 _BodyUpV, Vector3 _HeadUpV)
     {
-        HeadUp(_HeadUpV);
+        BodyUp(_BodyUpV, _HeadUpV);
+
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+        Move(new Vector3(x, 0, y));
     }
-    void HeadUp(Vector3 _HeadUpV)
+    void BodyUp(Vector3 _BodyUpV, Vector3 _HeadUpV)
     {
-        Head.GetComponent<Rigidbody>().AddForce(_HeadUpV);
+        Head.GetComponent<Rigidbody>().AddForce(_HeadUpV, ForceMode.Impulse);
+        Center.GetComponent<Rigidbody>().AddForce(_BodyUpV, ForceMode.Impulse);
+    }
+
+    void Move(Vector3 moveDir)
+    {
+        RB.AddForce(moveDir, ForceMode.Acceleration);
     }
 }
 
@@ -46,6 +56,8 @@ public class PlayerController : MonoBehaviour
     public Player PlayerOne;
     [SerializeField]
     public Player PlayerTwo;
+
+    public Vector3 HeadForce, BodyForce;
 
     //Players Controls
     //Second Player needs different controls
@@ -59,7 +71,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Update both players
-        PlayerOne.Update(new Vector3(0, 1, 0));
+        PlayerOne.Update(BodyForce, HeadForce);
         //PlayerTwo.Update(new Vector3(0, 1, 0));
     }
 
@@ -67,25 +79,6 @@ public class PlayerController : MonoBehaviour
     void InitPlayers()
     {
         PlayerOne.Init();
-        PlayerTwo.Init();
-    }
-
-    //Movement of Object
-    void MovementUpdate(Vector3 _Direction, GameObject _Object)
-    {
-        //Check if Object has Rigidbody
-        Rigidbody RB = _Object.GetComponent<Rigidbody>();
-        //Apply rigidbody if Object is missing one
-        if (RB == null) RB = _Object.AddComponent<Rigidbody>();
-        //Apply Velocity to object
-        RB.AddForce(_Direction);
-    }
-    //Movement of Character
-    void MovementUpdate(Player _Player)
-    {
-        //Move the bottom half, while keeping the top half ragdolly
-        //
-        //Apply Velocity to object
-        _Player.RB.AddForce(_Player.Velocity);
+        //PlayerTwo.Init();
     }
 }
