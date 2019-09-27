@@ -5,10 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class Player
 {
+    //Attributes of each character
+    int Health = 100;//Init health to maxHealth
+
+
+
     [Header("Basic Attributes")]
     public GameObject Object;
     public Vector3 Velocity;
-    public Rigidbody RB;
     public float moveSpeed;
 
     [Header("Bones")]
@@ -17,23 +21,36 @@ public class Player
     public GameObject RightArm;
     public GameObject LeftArm;
 
+    Rigidbody CenterRB;
+    Rigidbody HeadRB;
+
+    public void Init()
+    {
+        //Setup a reference to the Rigidbodys
+        HeadRB = Head.GetComponent<Rigidbody>();
+        CenterRB = Center.GetComponent<Rigidbody>();
+    }
+
     public void Update(Vector3 _BodyUpV, Vector3 _HeadUpV)
     {
         BodyUp(_BodyUpV, _HeadUpV);
-
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-        Move(new Vector3(x, 0, y) * moveSpeed);
+        InputController();
     }
     void BodyUp(Vector3 _BodyUpV, Vector3 _HeadUpV)
     {
-        Head.GetComponent<Rigidbody>().AddForce(_HeadUpV, ForceMode.Impulse);
-        Center.GetComponent<Rigidbody>().AddForce(_BodyUpV, ForceMode.Impulse);
+        HeadRB.AddForce(_HeadUpV, ForceMode.Impulse);
+        CenterRB.AddForce(_BodyUpV, ForceMode.Impulse);
     }
 
     void Move(Vector3 moveDir)
     {
-        RB.AddForce(moveDir, ForceMode.Acceleration);
+        CenterRB.AddForce(moveDir, ForceMode.Acceleration);
+    }
+    void InputController()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+        Move(new Vector3(x, 0, y) * moveSpeed);
     }
 }
 
@@ -52,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
+        PlayerOne.Init();
     }
 
     void Update()
