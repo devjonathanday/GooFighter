@@ -5,26 +5,77 @@ using TMPro;
 
 public class UpdateUI : MonoBehaviour
 {
+    [Header("Number Meshes")]
+    public GameObject[] NumberObjects = new GameObject[3];//0-9
+
     [Header("GameManager")]
-    public GameManager GameManager;
+    GameManager Manager;
 
     [Header("UIDisplays")]
-    public TextMeshProUGUI RoundDisplay;
+    public TextMeshProUGUI TimerDisplay;
+    //public TextMeshProUGUI 
+
+    [Header("Different Preferences")]
+    public bool DisplayTimeInSeconds;
+
+    void Start()
+    {
+        Manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
 
     void Update()
     {
         DisplayRoundNumber();
+        if (TimerDisplay != null) DisplayTimer();
     }
 
     void DisplayRoundNumber()
     {
-        //Make the text equal the current round
-        RoundDisplay.text = GameManager.GetRound().ToString();
-        CheatRound();
+        //Set all the round numbers to be hidden
+        for(int i = 0; i < NumberObjects.Length; i++)
+        {
+            NumberObjects[i].SetActive(false);
+        }
+        //Set the current round number to appear
+        //If the round is greator than the max rounds, the display is the max rounds
+        NumberObjects[(Manager.GetRound() < NumberObjects.Length) ? Manager.GetRound() : NumberObjects.Length - 1].SetActive(true);
     }
-    void CheatRound()
+    void DisplayTimer()
     {
-        //Move to the next round when P is pressed
-        if (Input.GetKeyDown(KeyCode.P)) GameManager.NextRound();
+        //Display the time left for the round
+        if(DisplayTimeInSeconds)
+        {
+            TimerDisplay.text = ((int)Manager.GetRoundTime()).ToString();
+        }
+        //Timer needs to count in seconds, but display in minutes and seconds
+        else
+        {
+            //Displays the timer as Minutes and then seconds
+            TimerDisplay.text = (((int)Manager.GetRoundTime()) / 60).ToString();
+
+            //If the Secounds == 0
+            if((((int)Manager.GetRoundTime()) % 60) == 0)
+            {
+                //Display them as two 0's rather than one
+                TimerDisplay.text += ":" + "00";
+            }
+            else
+            {
+                //Else display the seconds
+                TimerDisplay.text += ":";
+                //If the time is less than 10 seconds
+                if ((((int)Manager.GetRoundTime()) % 60) < 10)
+                {
+                    //Add a zero before the number
+                    TimerDisplay.text += "0" + (((int)Manager.GetRoundTime()) % 60);
+                }
+                else
+                {
+                    //Timer is displayed as is
+                    TimerDisplay.text += (((int)Manager.GetRoundTime()) % 60);
+                }
+            }
+            
+        }
     }
 }
