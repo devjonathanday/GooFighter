@@ -9,14 +9,14 @@ public class GameManager : MonoBehaviour
 {
     static GameManager Manager;//Singletoness
 
-    public GAMESTATE CurrentState;
-    int Round = 0;
+    public GAMESTATE CurrentState;//Current state of the game
+    int Round = 0;//Which round is current
 
-    int Player1Score = 0;
-    int Player2Score = 0;
+    int Player1Score = 0;//Score For Player One
+    int Player2Score = 0;//Score For Player Two
 
-    float MaxRoundTimer = 180.0f;
-    float RoundTimer;
+    float MaxRoundTimer = 180.0f;//Reset time for the Timer
+    float RoundTimer;//Round timer
 
 
     void Start()

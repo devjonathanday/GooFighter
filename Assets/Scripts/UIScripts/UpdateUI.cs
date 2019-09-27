@@ -7,8 +7,8 @@ public class UpdateUI : MonoBehaviour
 {
     [Header("Number Meshes")]
     public GameObject[] NumberObjects = new GameObject[3];//1-3
-    //public GameObject[] PlayerOneScoreObjects = new GameObject[3];//Display for player one's score
-    //public GameObject[] PlayerTwoScoreObjects = new GameObject[3];//Display for players two's score
+    public GameObject[] PlayerOneScoreObjects = new GameObject[3];//Display for player one's score
+    public GameObject[] PlayerTwoScoreObjects = new GameObject[3];//Display for players two's score
 
     [Header("GameManager")]
     GameManager Manager;
@@ -28,7 +28,7 @@ public class UpdateUI : MonoBehaviour
     void Update()
     {
         DisplayRoundNumber();
-        //DisplayWins();
+        DisplayWins();
         if (TimerDisplay != null) DisplayTimer();
     }
 
@@ -82,14 +82,17 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    //void DisplayWins()
-    //{
-    //    for(int i = 0; i < PlayerOneScoreObjects.Length; i++)
-    //    {
-    //        PlayerOneScoreObjects[i].SetActive(false);
-    //        PlayerTwoScoreObjects[i].SetActive(false);
-    //    }
-    //    PlayerOneScoreObjects[Manager.GetPlayerScore(1)].SetActive(true);
-    //    PlayerTwoScoreObjects[Manager.GetPlayerScore(2)].SetActive(true);
-    //}
+    void DisplayWins()
+    {
+        //Loop through all the objects in PlayerOneScoreObjects and PlayerTwoScoreObjects
+        for (int i = 0; i < PlayerOneScoreObjects.Length; i++)
+        {
+            //Set them all their activness to false
+            PlayerOneScoreObjects[(i < PlayerOneScoreObjects.Length) ? i : PlayerOneScoreObjects.Length].SetActive(false);
+            PlayerTwoScoreObjects[(i < PlayerOneScoreObjects.Length) ? i : PlayerOneScoreObjects.Length].SetActive(false);
+        }
+        //Set the correct one to true
+        PlayerOneScoreObjects[Manager.GetPlayerScore(1)].SetActive(true);
+        PlayerTwoScoreObjects[Manager.GetPlayerScore(2)].SetActive(true);
+    }
 }
