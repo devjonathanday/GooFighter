@@ -21,7 +21,7 @@ public class MoveFootTarget : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.localPosition = offset + new Vector3(0, (walkCurveY.Evaluate((Time.time + timeOffset) % 1) - distanceLimit) / 100, (walkCurveX.Evaluate((Time.time + timeOffset) % 1) - distanceLimit) / 100);
     }

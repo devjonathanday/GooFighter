@@ -9,15 +9,16 @@ public class Player
 
     //Attributes of each character
     int HealthVar;//Health
-    int Health { get { return HealthVar; } set { HealthVar = value; if (HealthVar <= 0) { Manager.SetGameState(GAMESTATE.EndOfRound); } } }//Init health to maxHealth
+    public int Health { get { return HealthVar; } set { HealthVar = value; if (HealthVar <= 0) { Manager.SetGameState(GAMESTATE.EndOfRound); GroundCheckDistance = 0; } } }//Init health to maxHealth
 
 
 
     [Header("Basic Attributes")]
-    public GameObject Object;
+    public GameObject Spine;
     public Vector3 Velocity;
     public LayerMask GroundMask;
     public float MoveSpeed;
+    public float RotSpeed;
     public float GroundCheckDistance;
 
     [Header("Bones")]
@@ -25,11 +26,12 @@ public class Player
     public GameObject Center;
     public GameObject RightArm;
     public GameObject LeftArm;
-
-    Rigidbody CenterRB;
-    Rigidbody HeadRB;
+    [Space(10)]
+    public Rigidbody CenterRB;
+    public Rigidbody HeadRB;
 
     bool OnGround;
+    public float RotationLerp;
 
     public void Init()
     {
@@ -44,9 +46,9 @@ public class Player
     public void Update(Vector3 _BodyUpV, Vector3 _HeadUpV)
     {
         RaycastHit hit;
-        if (Physics.Raycast(Object.transform.position, -Vector3.up, out hit, GroundCheckDistance, GroundMask))
+        if (Physics.Raycast(Spine.transform.position, -Vector3.up, out hit, GroundCheckDistance, GroundMask))
         {
-            Debug.DrawRay(Object.transform.position, -Vector3.up * GroundCheckDistance, Color.red);
+            Debug.DrawRay(Spine.transform.position, -Vector3.up * GroundCheckDistance, Color.red);
             BodyUp(_BodyUpV, _HeadUpV);
         }
         InputController();
@@ -61,11 +63,33 @@ public class Player
     {
         CenterRB.AddForce(moveDir, ForceMode.Acceleration);
     }
+
+    void Rotate(Quaternion rotateDir)
+    {
+        //CenterRB.MoveRotation(Object.transform.rotation * rotateDir);
+    }
     void InputController()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-        Move(new Vector3(x, 0, y) * MoveSpeed);
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        Vector3 input = new Vector3(x, 0, y).normalized;
+
+        //CenterRB.AddTorque(CenterRB.transform.up * (input - CenterRB.transform.forward).magnitude * RotSpeed, ForceMode.Impulse);
+        float desiredRotation = Mathf.Atan2(input.y, input.x);
+        float currentRotation = Mathf.Atan2(CenterRB.transform.forward.z, CenterRB.transform.forward.x);
+        //CenterRB.AddTorque(CenterRB.transform.up * (desiredRotation - currentRotation) * RotSpeed, ForceMode.Impulse);
+        //Debug.Log(CenterRB.transform.forward + ", " + input);
+        Vector3 forwardPos = CenterRB.position + CenterRB.transform.forward;
+        Vector3 positionToInput = CenterRB.position + input;
+
+        if (input.sqrMagnitude != 0)
+        {
+            CenterRB.AddForceAtPosition(positionToInput - forwardPos, forwardPos, ForceMode.Impulse);
+        }
+
+        Move(input * MoveSpeed);
+        //RotationCenter.rotation = Quaternion.Lerp(RotationCenter.transform.rotation, Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Atan2(y, x), Vector3.up), RotationLerp);
+
     }
 }
 
@@ -85,12 +109,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         PlayerOne.Init();
+        if (PlayerTwo.Spine != null) PlayerTwo.Init();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //Update both players
         PlayerOne.Update(BodyForce, HeadForce);
-        //PlayerTwo.Update(new Vector3(0, 1, 0));
+        if (PlayerTwo.Spine != null) PlayerTwo.Update(BodyForce, HeadForce);
     }
 }

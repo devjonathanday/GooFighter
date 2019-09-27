@@ -38,6 +38,6 @@ public class FootFollow : MonoBehaviour
 
         speed = correction.magnitude;
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-            rb.AddForce(correction);
+            rb.AddForce(correction, ForceMode.Force);
     }
 }
