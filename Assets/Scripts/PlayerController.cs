@@ -5,8 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class Player
 {
+    GameManager Manager;
+
     //Attributes of each character
-    int Health = 100;//Init health to maxHealth
+    int HealthVar;//Health
+    int Health { get { return HealthVar; } set { HealthVar = value; if (HealthVar <= 0) { Manager.SetGameState(GAMESTATE.EndOfRound); } } }//Init health to maxHealth
 
 
 
@@ -29,6 +32,9 @@ public class Player
         //Setup a reference to the Rigidbodys
         HeadRB = Head.GetComponent<Rigidbody>();
         CenterRB = Center.GetComponent<Rigidbody>();
+
+        //Setup GameManager
+        Manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     public void Update(Vector3 _BodyUpV, Vector3 _HeadUpV)

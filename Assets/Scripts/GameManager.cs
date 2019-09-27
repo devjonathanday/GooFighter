@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour
         //singleton
         if (Manager == null) Manager = this;
         else Destroy(gameObject);
-    }
 
+        //GameManager Don't destroy from scene to scene
+        DontDestroyOnLoad(this);
+    }
 
     public void NextRound()
     {
