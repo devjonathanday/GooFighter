@@ -562,7 +562,11 @@ MonoBehaviour:
   PlayerOne:
     Object: {fileID: 879330983}
     Velocity: {x: 0, y: 0, z: 0}
-    moveSpeed: 0
+    GroundMask:
+      serializedVersion: 2
+      m_Bits: 0
+    MoveSpeed: 0
+    GroundCheckDistance: 0
     Head: {fileID: 0}
     Center: {fileID: 0}
     RightArm: {fileID: 0}
@@ -570,7 +574,11 @@ MonoBehaviour:
   PlayerTwo:
     Object: {fileID: 385294726}
     Velocity: {x: 0, y: 0, z: 0}
-    moveSpeed: 0
+    GroundMask:
+      serializedVersion: 2
+      m_Bits: 0
+    MoveSpeed: 0
+    GroundCheckDistance: 0
     Head: {fileID: 0}
     Center: {fileID: 0}
     RightArm: {fileID: 0}
@@ -1095,15 +1103,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6708833869370421196, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+    - target: {fileID: 8695762053090068180, guid: d5b87fb12bdbce24f9148597d0e0ee82,
         type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 534669904}
-    - target: {fileID: 3797084697865012023, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522269006994401893, guid: d5b87fb12bdbce24f9148597d0e0ee82,
         type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -112.29999
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b87fb12bdbce24f9148597d0e0ee82, type: 3}
