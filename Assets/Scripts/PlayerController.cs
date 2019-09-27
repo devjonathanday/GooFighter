@@ -9,6 +9,7 @@ public class Player
     public GameObject Object;
     public Vector3 Velocity;
     public Rigidbody RB;
+    public float moveSpeed;
 
     [Header("Bones")]
     public GameObject Head;
@@ -16,26 +17,13 @@ public class Player
     public GameObject RightArm;
     public GameObject LeftArm;
 
-    public void Init()
-    {
-        //Check RigidBody of Player
-        if (RB == null)
-        {
-            //If non existant, attempt to assign
-            if ((RB = Object.GetComponent<Rigidbody>()) == null)
-            {
-                //If fail again, add a rigidbody to player
-                RB = Object.AddComponent<Rigidbody>();
-            }
-        }
-    }
     public void Update(Vector3 _BodyUpV, Vector3 _HeadUpV)
     {
         BodyUp(_BodyUpV, _HeadUpV);
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        Move(new Vector3(x, 0, y));
+        Move(new Vector3(x, 0, y) * moveSpeed);
     }
     void BodyUp(Vector3 _BodyUpV, Vector3 _HeadUpV)
     {
@@ -64,8 +52,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        //Initilize both players
-        InitPlayers();
+
     }
 
     void Update()
@@ -73,12 +60,5 @@ public class PlayerController : MonoBehaviour
         //Update both players
         PlayerOne.Update(BodyForce, HeadForce);
         //PlayerTwo.Update(new Vector3(0, 1, 0));
-    }
-
-    //Initilize the players with components
-    void InitPlayers()
-    {
-        PlayerOne.Init();
-        //PlayerTwo.Init();
     }
 }
