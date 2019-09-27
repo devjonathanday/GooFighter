@@ -13,16 +13,26 @@ public class MoveFootTarget : MonoBehaviour
     AnimationCurve walkCurveY = new AnimationCurve();
 
     Vector3 offset;
+    float timer;
 
-    // Start is called before the first frame update
     void Start()
     {
         offset = transform.localPosition;
     }
 
-    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            timer = 0;
+        }
+    }
     void FixedUpdate()
     {
-        transform.localPosition = offset + new Vector3(0, (walkCurveY.Evaluate((Time.time + timeOffset) % 1) - distanceLimit) / 100, (walkCurveX.Evaluate((Time.time + timeOffset) % 1) - distanceLimit) / 100);
+        transform.localPosition = offset + new Vector3(0, (walkCurveY.Evaluate((timer + timeOffset) % 1) - distanceLimit) / 100, (walkCurveX.Evaluate((timer + timeOffset) % 1) - distanceLimit) / 100);
     }
 }
