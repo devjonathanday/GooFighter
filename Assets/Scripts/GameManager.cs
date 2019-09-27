@@ -93,6 +93,8 @@ public class GameManager : MonoBehaviour
         {
             //Record which player won
             IncreasePlayerScore(_PlayerNumber);
+            //Set Round ending timer
+            RoundWaitingPeriod();
         }
     }
     public GAMESTATE GetState()

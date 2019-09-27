@@ -7,9 +7,11 @@ public class Player
 {
     GameManager Manager;
 
+    public int IndexNumber;
+
     //Attributes of each character
-    int HealthVar;//Health
-    public int Health { get { return HealthVar; } set { HealthVar = value; if (HealthVar <= 0) { Manager.SetGameState(GAMESTATE.EndOfRound); GroundCheckDistance = 0; } } }//Init health to maxHealth
+    int HealthVar = 100;//Health
+    int Health { get { return HealthVar; } set { HealthVar = value; if (HealthVar <= 0) { Manager.SetGameState(GAMESTATE.EndOfRound, IndexNumber); GroundCheckDistance = 0; } } }//Init health to maxHealth
 
 
 
@@ -90,6 +92,15 @@ public class Player
         Move(input * MoveSpeed);
         //RotationCenter.rotation = Quaternion.Lerp(RotationCenter.transform.rotation, Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Atan2(y, x), Vector3.up), RotationLerp);
 
+    }
+
+    public void DamagePlayer(int _Damage)
+    {
+        Health -= _Damage;
+    }
+    public int GetHealth()
+    {
+        return Health;
     }
 }
 

@@ -3,6 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+[System.Serializable]
+public class HealthBar
+{
+    public RectTransform MainScalar;
+    public RectTransform LossScalar;
+
+    public void Update(int _Health)
+    {
+        MainScalar.localScale = new Vector3((float)_Health / 100, 1, 1);
+        LossScalar.localScale = new Vector3(Mathf.Lerp(LossScalar.localScale.x, MainScalar.localScale.x, 1 * Time.deltaTime), 1, 1);
+    }
+
+}
+
 public class UpdateUI : MonoBehaviour
 {
     [Header("Number Meshes")]
@@ -10,12 +24,16 @@ public class UpdateUI : MonoBehaviour
     public GameObject[] PlayerOneScoreObjects = new GameObject[3];//Display for player one's score
     public GameObject[] PlayerTwoScoreObjects = new GameObject[3];//Display for players two's score
 
-    [Header("GameManager")]
-    GameManager Manager;
+    GameManager Manager;//Static Game manager
+    [Header("Controllers")]
+    public PlayerController PController;
 
     [Header("UIDisplays")]
-    public TextMeshProUGUI TimerDisplay;
-    //public TextMeshProUGUI 
+    public TextMeshProUGUI TimerDisplay;//Timer Text display 
+
+    [Header("Health Display")]
+    public HealthBar PlayerOneHealth;
+    public HealthBar PlayerTwoHealth;
 
     [Header("Different Preferences")]
     public bool DisplayTimeInSeconds;
@@ -27,9 +45,17 @@ public class UpdateUI : MonoBehaviour
 
     void Update()
     {
+        //Displays correct Object for the Round number
         DisplayRoundNumber();
+        //Displays both of the players Wins
         DisplayWins();
+        //Displays the round timer if the object exists
         if (TimerDisplay != null) DisplayTimer();
+        //Updates PlayerOne's health display
+        PlayerOneHealth.Update(PController.PlayerOne.GetHealth());
+        PlayerTwoHealth.Update(PController.PlayerTwo.GetHealth());
+        if (Input.GetKeyDown(KeyCode.J)) PController.PlayerOne.DamagePlayer(10);
+        if (Input.GetKeyDown(KeyCode.H)) PController.PlayerTwo.DamagePlayer(10);
     }
 
     void DisplayRoundNumber()
@@ -92,7 +118,7 @@ public class UpdateUI : MonoBehaviour
             PlayerTwoScoreObjects[(i < PlayerOneScoreObjects.Length) ? i : PlayerOneScoreObjects.Length].SetActive(false);
         }
         //Set the correct one to true
-        PlayerOneScoreObjects[Manager.GetPlayerScore(1)].SetActive(true);
-        PlayerTwoScoreObjects[Manager.GetPlayerScore(2)].SetActive(true);
+        PlayerOneScoreObjects[(Manager.GetPlayerScore(1) < PlayerOneScoreObjects.Length) ? Manager.GetPlayerScore(1) : PlayerOneScoreObjects.Length - 1].SetActive(true);
+        PlayerTwoScoreObjects[(Manager.GetPlayerScore(2) < PlayerTwoScoreObjects.Length) ? Manager.GetPlayerScore(2) : PlayerTwoScoreObjects.Length - 1].SetActive(true);
     }
 }
