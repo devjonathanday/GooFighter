@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     public GAMESTATE CurrentState;
     int Round = 0;
 
-    int Player1Score;
-    int Player2Score;
+    int Player1Score = 0;
+    int Player2Score = 0;
 
     float MaxRoundTimer = 180.0f;
     float RoundTimer;

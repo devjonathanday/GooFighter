@@ -6,7 +6,9 @@ using TMPro;
 public class UpdateUI : MonoBehaviour
 {
     [Header("Number Meshes")]
-    public GameObject[] NumberObjects = new GameObject[3];//0-9
+    public GameObject[] NumberObjects = new GameObject[3];//1-3
+    public GameObject[] PlayerOneScoreObjects = new GameObject[3];//Display for player one's score
+    public GameObject[] PlayerTwoScoreObjects = new GameObject[3];//Display for players two's score
 
     [Header("GameManager")]
     GameManager Manager;
@@ -26,6 +28,7 @@ public class UpdateUI : MonoBehaviour
     void Update()
     {
         DisplayRoundNumber();
+        DisplayWins();
         if (TimerDisplay != null) DisplayTimer();
     }
 
@@ -77,5 +80,16 @@ public class UpdateUI : MonoBehaviour
             }
             
         }
+    }
+
+    void DisplayWins()
+    {
+        for(int i = 0; i < PlayerOneScoreObjects.Length; i++)
+        {
+            PlayerOneScoreObjects[i].SetActive(false);
+            PlayerTwoScoreObjects[i].SetActive(false);
+        }
+        PlayerOneScoreObjects[Manager.GetPlayerScore(1)].SetActive(true);
+        PlayerTwoScoreObjects[Manager.GetPlayerScore(2)].SetActive(true);
     }
 }
