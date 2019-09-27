@@ -13,6 +13,9 @@ public class FootFollow : MonoBehaviour
     private Vector3 errorSum;
     public Transform target;
 
+    [SerializeField]
+    float speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +34,10 @@ public class FootFollow : MonoBehaviour
         correction += error * p;
         correction += errorSum * i;
         correction += Vector3.Project(rb.velocity, rb.velocity) * d * Time.fixedDeltaTime;
-        rb.AddForce(correction);
+        correction -= rb.velocity;
+
+        speed = correction.magnitude;
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+            rb.AddForce(correction);
     }
 }

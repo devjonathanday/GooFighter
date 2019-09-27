@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class MoveFootTarget : MonoBehaviour
 {
-    public Vector3 offset;
     public float timeOffset;
+    public float distanceLimit;
 
     [SerializeField]
-    AnimationCurve walkCurveX;
+    AnimationCurve walkCurveX = new AnimationCurve();
     [SerializeField]
-    AnimationCurve walkCurveY;
+    AnimationCurve walkCurveY = new AnimationCurve();
+
+    Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,6 @@ public class MoveFootTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition = offset + new Vector3(0, walkCurveY.Evaluate((Time.time + timeOffset) % 1) / 100, walkCurveX.Evaluate((Time.time + timeOffset) % 1) / 100);
+        transform.localPosition = offset + new Vector3(0, (walkCurveY.Evaluate((Time.time + timeOffset) % 1) - distanceLimit) / 100, (walkCurveX.Evaluate((Time.time + timeOffset) % 1) - distanceLimit) / 100);
     }
 }

@@ -16,7 +16,9 @@ public class Player
     [Header("Basic Attributes")]
     public GameObject Object;
     public Vector3 Velocity;
-    public float moveSpeed;
+    public LayerMask GroundMask;
+    public float MoveSpeed;
+    public float GroundCheckDistance;
 
     [Header("Bones")]
     public GameObject Head;
@@ -26,6 +28,8 @@ public class Player
 
     Rigidbody CenterRB;
     Rigidbody HeadRB;
+
+    bool OnGround;
 
     public void Init()
     {
@@ -39,7 +43,12 @@ public class Player
 
     public void Update(Vector3 _BodyUpV, Vector3 _HeadUpV)
     {
-        BodyUp(_BodyUpV, _HeadUpV);
+        RaycastHit hit;
+        if (Physics.Raycast(Object.transform.position, -Vector3.up, out hit, GroundCheckDistance, GroundMask))
+        {
+            Debug.DrawRay(Object.transform.position, -Vector3.up * GroundCheckDistance, Color.red);
+            BodyUp(_BodyUpV, _HeadUpV);
+        }
         InputController();
     }
     void BodyUp(Vector3 _BodyUpV, Vector3 _HeadUpV)
@@ -56,7 +65,7 @@ public class Player
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        Move(new Vector3(x, 0, y) * moveSpeed);
+        Move(new Vector3(x, 0, y) * MoveSpeed);
     }
 }
 
