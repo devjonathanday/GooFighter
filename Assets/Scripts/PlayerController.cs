@@ -30,7 +30,6 @@ public class Player
     public GameObject LeftArm;
     [Space(10)]
     public Rigidbody CenterRB;
-    public Rigidbody LowerRB;
     public Rigidbody HeadRB;
 
     bool OnGround;

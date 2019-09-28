@@ -30,14 +30,19 @@ public class FootFollow : MonoBehaviour
         error = target.position - transform.position;
         errorSum += error * Time.fixedDeltaTime;
 
+        Debug.DrawRay(transform.position, Vector3.Project(rb.velocity, rb.velocity) * d * Time.fixedDeltaTime, Color.red);
+        Debug.DrawRay(transform.position, rb.velocity, Color.blue);
+        Debug.DrawRay(transform.position, new Vector3(Mathf.Sign(error.x), Mathf.Sign(error.y), Mathf.Sign(error.z)));
+
         Vector3 correction = Vector3.zero;
         correction += error * p;
         correction += errorSum * i;
         correction += Vector3.Project(rb.velocity, rb.velocity) * d * Time.fixedDeltaTime;
-        correction -= rb.velocity;
 
         speed = correction.magnitude;
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-            rb.AddForce(correction, ForceMode.Force);
+
+        rb.AddForce(correction, ForceMode.Force);
+        if (Vector3.Distance(transform.position, target.position) < 0.1f)
+            Debug.Log("reached target");
     }
 }

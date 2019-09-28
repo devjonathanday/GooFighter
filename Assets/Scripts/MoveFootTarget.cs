@@ -33,6 +33,12 @@ public class MoveFootTarget : MonoBehaviour
     }
     void FixedUpdate()
     {
-        transform.localPosition = offset + new Vector3(0, (walkCurveY.Evaluate((timer + timeOffset) % 1) - distanceLimit) / 100, (walkCurveX.Evaluate((timer + timeOffset) % 1) - distanceLimit) / 100);
+        transform.localPosition = offset + new Vector3(0, (walkCurveY.Evaluate((timer + timeOffset) % 1)) / 100, (walkCurveX.Evaluate((timer + timeOffset) % 1)) / 100);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, 0.1f);
     }
 }
