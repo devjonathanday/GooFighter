@@ -76,11 +76,8 @@ public class Player
         float y = Input.GetAxisRaw("Vertical");
         Vector3 input = new Vector3(x, 0, y).normalized;
 
-        //CenterRB.AddTorque(CenterRB.transform.up * (input - CenterRB.transform.forward).magnitude * RotSpeed, ForceMode.Impulse);
         float desiredRotation = Mathf.Atan2(input.y, input.x);
         float currentRotation = Mathf.Atan2(CenterRB.transform.forward.z, CenterRB.transform.forward.x);
-        //CenterRB.AddTorque(CenterRB.transform.up * (desiredRotation - currentRotation) * RotSpeed, ForceMode.Impulse);
-        //Debug.Log(CenterRB.transform.forward + ", " + input);
         Vector3 forwardPos = CenterRB.position + CenterRB.transform.forward;
         Vector3 positionToInput = CenterRB.position + input;
 

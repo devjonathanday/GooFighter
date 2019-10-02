@@ -41,8 +41,7 @@ public class FootFollow : MonoBehaviour
 
         speed = correction.magnitude;
 
-        rb.AddForce(correction, ForceMode.Force);
-        if (Vector3.Distance(transform.position, target.position) < 0.1f)
-            Debug.Log("reached target");
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        rb.AddForce(correction);
     }
 }
