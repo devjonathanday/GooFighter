@@ -8,13 +8,13 @@ public class HealthBar
 {
     public RectTransform MainScalar;
     public RectTransform LossScalar;
+    public float lossSpeed;
 
-    public void Update(int _Health)
+    public void Update(int _Health, int _PreviousHealth)
     {
         MainScalar.localScale = new Vector3((float)_Health / 100, 1, 1);
-        LossScalar.localScale = new Vector3(Mathf.Lerp(LossScalar.localScale.x, MainScalar.localScale.x, 1 * Time.deltaTime), 1, 1);
+        LossScalar.localScale = new Vector3(Mathf.Lerp(_PreviousHealth, _Health, lossSpeed), 1, 1);
     }
-
 }
 
 public class UpdateUI : MonoBehaviour
@@ -40,7 +40,10 @@ public class UpdateUI : MonoBehaviour
 
     void Start()
     {
+        //Attempt to find GameManager
         Manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        //If no game manager, create another
+        if (Manager == null) Manager = GameManager.CreateMissingManager().GetComponent<GameManager>();
     }
 
     void Update()
@@ -52,10 +55,10 @@ public class UpdateUI : MonoBehaviour
         //Displays the round timer if the object exists
         if (TimerDisplay != null) DisplayTimer();
         //Updates PlayerOne's health display
-        PlayerOneHealth.Update(PController.PlayerOne.GetHealth());
-        PlayerTwoHealth.Update(PController.PlayerTwo.GetHealth());
-        if (Input.GetKeyDown(KeyCode.J)) PController.PlayerOne.DamagePlayer(10);
-        if (Input.GetKeyDown(KeyCode.H)) PController.PlayerTwo.DamagePlayer(10);
+        PlayerOneHealth.Update(PController.PlayerOne.GetHealth(), PController.PlayerOne.GetPreviousHealth());
+        PlayerOneHealth.Update(PController.PlayerTwo.GetHealth(), PController.PlayerTwo.GetPreviousHealth());
+        //if (Input.GetKeyDown(KeyCode.J)) PController.PlayerOne.DamagePlayer(10);
+        //if (Input.GetKeyDown(KeyCode.H)) PController.PlayerTwo.DamagePlayer(10);
     }
 
     void DisplayRoundNumber()

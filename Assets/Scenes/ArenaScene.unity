@@ -1310,6 +1310,26 @@ PrefabInstance:
       propertyPath: DisplayTimeInSeconds
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8159761466489222006, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: PlayerOneHealth.LossHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159761466489222006, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: PlayerTwoHealth.LossHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159761466489222006, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: PlayerOneHealth.lossSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159761466489222006, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: PlayerTwoHealth.lossSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b87fb12bdbce24f9148597d0e0ee82, type: 3}
 --- !u!1 &2013089153 stripped

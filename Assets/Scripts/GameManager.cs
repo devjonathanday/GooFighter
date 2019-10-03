@@ -165,4 +165,12 @@ public class GameManager : MonoBehaviour
             RoundWaitingPeriod();
         }
     }
+
+    public static GameObject CreateMissingManager()
+    {
+        GameObject NewManager = new GameObject();
+        NewManager.tag = "GameManager";
+        NewManager.AddComponent<GameManager>();
+        return NewManager;
+    }
 }
