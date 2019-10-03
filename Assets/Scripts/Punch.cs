@@ -16,6 +16,8 @@ public class Punch : MonoBehaviour
     public float MinimumForceForDamage = 0.5f;
     public float damageScalar;
 
+    public float launchSpeed;
+
     void Start()
     {
         RB = GetComponent<Rigidbody>();
@@ -91,7 +93,7 @@ public class Punch : MonoBehaviour
             if (HitPointRB != null)
             {
                 //Adds the force the arm was traveling
-                //HitPointRB.AddForce(RB.velocity * 2, ForceMode.Impulse);
+                HitPointRB.AddForce(RB.velocity * launchSpeed, ForceMode.Impulse);
                 //print("Pushed " + collision.gameObject.name + " with " + RB.velocity + " force");
             }
         }

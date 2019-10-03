@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6970096431636981810}
   - component: {fileID: 6970096431636981811}
   - component: {fileID: 6970096431636981820}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Arm.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &6970096431636981811
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -158,7 +158,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6970096431734185955
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 6970096431788577155}
   - component: {fileID: 6970096431788577152}
   - component: {fileID: 6970096431788577159}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ForeArm.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,6 +398,7 @@ MonoBehaviour:
   PunchForce: 5
   MinimumForceForDamage: 5
   damageScalar: 0.1
+  launchSpeed: 0
 --- !u!114 &6970096431788577159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,6 +414,7 @@ MonoBehaviour:
   capsule: {fileID: 6970096431788577154}
   defaultHeight: 0.005232535
   scalar: 2
+  maxStretchDistance: 0
   connectedBody: {fileID: 6970096433175721482}
 --- !u!1 &6970096431888683147
 GameObject:
@@ -558,7 +560,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &6970096431995647307
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -622,7 +624,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6970096432008145137
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -659,7 +661,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1037,7 +1039,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6970096432608034578
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1074,7 +1076,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1387,7 +1389,7 @@ GameObject:
   - component: {fileID: 6970096433175721482}
   - component: {fileID: 6970096433175721487}
   - component: {fileID: 6970096433175721480}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Arm.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1424,7 +1426,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6970096433175721487
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1461,7 +1463,7 @@ CharacterJoint:
     limit: 90
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1498,7 +1500,7 @@ GameObject:
   - component: {fileID: 6970096433198777366}
   - component: {fileID: 6970096433198777451}
   - component: {fileID: 6970096433198777450}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ForeArm.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1664,6 +1666,7 @@ MonoBehaviour:
   PunchForce: 5
   MinimumForceForDamage: 5
   damageScalar: 0.1
+  launchSpeed: 0
 --- !u!114 &6970096433198777450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1679,6 +1682,7 @@ MonoBehaviour:
   capsule: {fileID: 6970096433198777365}
   defaultHeight: 0.005232535
   scalar: 2
+  maxStretchDistance: 0
   connectedBody: {fileID: 6970096431636981810}
 --- !u!1 &6970096433337193002
 GameObject:
@@ -1729,7 +1733,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6970096433337193006
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1766,7 +1770,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1799,7 +1803,7 @@ GameObject:
   - component: {fileID: 6970096433408348811}
   - component: {fileID: 6970096433408348810}
   m_Layer: 0
-  m_Name: Player1
+  m_Name: BasePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1920,7 +1924,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6970096433503366247
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1957,7 +1961,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -2028,7 +2032,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6970096433660860161
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2065,7 +2069,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
