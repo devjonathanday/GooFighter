@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         TimerUpdate();
-        CHEAT();
+        //CHEAT();
     }
 
     //Round functions
