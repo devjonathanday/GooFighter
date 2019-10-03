@@ -11,10 +11,28 @@ public class Player
 
     //Attributes of each character
     int HealthVar = 100;//Health
-    int Health { get { return HealthVar; } set { HealthVar = value; if (HealthVar <= 0) { Manager.SetGameState(GAMESTATE.EndOfRound, IndexNumber); GroundCheckDistance = 0; } } }//Init health to maxHealth
+    int PreviousHealthVar = 100;
+    int Health
+    {
+        get { return HealthVar; } //Init health to maxHealth
 
-
-
+        set
+        {
+            HealthVar = value;
+            if (HealthVar <= 0)
+            {
+                Manager.SetGameState(GAMESTATE.EndOfRound, IndexNumber);
+                GroundCheckDistance = 0;
+                HealthVar = 0;
+            }
+        }
+    }
+    int PreviousHealth
+    {
+        get { return PreviousHealthVar; }
+        set { PreviousHealthVar = value; }
+    }
+    
     [Header("Basic Attributes")]
     public GameObject Spine;
     public Vector3 Velocity;
@@ -98,11 +116,16 @@ public class Player
 
     public void DamagePlayer(int _Damage)
     {
+        PreviousHealth = Health;
         Health -= _Damage;
     }
     public int GetHealth()
     {
         return Health;
+    }
+    public int GetPreviousHealth()
+    {
+        return PreviousHealth;
     }
 }
 
