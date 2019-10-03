@@ -8,35 +8,75 @@ public class HealthBar
 {
     public RectTransform MainScalar;
     public RectTransform LossScalar;
-    public float lossSpeed;
+    float StartHealth = 100;
+    float EndHealth = 100;
+
+    float TimerVar;
+    public float Timer
+    {
+        get { return TimerVar; }
+        set { TimerVar = Mathf.Clamp(value, 0, 1); }
+    }
 
     public void Update(int _Health, int _PreviousHealth)
     {
+        //If the TempEndHealth is not the new Health
+        if(EndHealth != _Health)
+        {
+            //Set the starting position of the health to the current position
+            StartHealth = Mathf.Lerp((float)StartHealth, (float)EndHealth, Timer);
+            //Set the Temp Health to the new health
+            EndHealth = _Health;
+            //Reset the current timer
+            ResetTimer();
+        }
+        //Change the Main health to the New health
         MainScalar.localScale = new Vector3((float)_Health / 100, 1, 1);
-        LossScalar.localScale = new Vector3(Mathf.Lerp(_PreviousHealth, _Health, lossSpeed), 1, 1);
+        //Update the timer
+        TimerUpdate();
+        //Lerp the Loss health to the new Low Health
+        LossScalar.localScale = new Vector3(Mathf.Lerp((float)StartHealth / 100, (float)_Health / 100, Timer), 1, 1);
+    }
+    void ResetTimer()
+    {
+        Timer = 0;
+    }
+    void TimerUpdate()
+    {
+        Timer += Time.deltaTime;
     }
 }
 
 public class UpdateUI : MonoBehaviour
 {
+    #region Number Meshes
     [Header("Number Meshes")]
     public GameObject[] NumberObjects = new GameObject[3];//1-3
     public GameObject[] PlayerOneScoreObjects = new GameObject[3];//Display for player one's score
     public GameObject[] PlayerTwoScoreObjects = new GameObject[3];//Display for players two's score
+    #endregion
 
+    #region ManagerControllers
     GameManager Manager;//Static Game manager
     [Header("Controllers")]
     public PlayerController PController;
+    #endregion
 
+    #region Displays
     [Header("UIDisplays")]
     public TextMeshProUGUI TimerDisplay;//Timer Text display 
+    #endregion
 
+    #region HealthBars
     [Header("Health Display")]
     public HealthBar PlayerOneHealth;
     public HealthBar PlayerTwoHealth;
+    #endregion
 
+    #region Preferences
     [Header("Different Preferences")]
     public bool DisplayTimeInSeconds;
+    #endregion
 
     void Start()
     {
@@ -56,9 +96,8 @@ public class UpdateUI : MonoBehaviour
         if (TimerDisplay != null) DisplayTimer();
         //Updates PlayerOne's health display
         PlayerOneHealth.Update(PController.PlayerOne.GetHealth(), PController.PlayerOne.GetPreviousHealth());
-        PlayerOneHealth.Update(PController.PlayerTwo.GetHealth(), PController.PlayerTwo.GetPreviousHealth());
-        //if (Input.GetKeyDown(KeyCode.J)) PController.PlayerOne.DamagePlayer(10);
-        //if (Input.GetKeyDown(KeyCode.H)) PController.PlayerTwo.DamagePlayer(10);
+        PlayerTwoHealth.Update(PController.PlayerTwo.GetHealth(), PController.PlayerTwo.GetPreviousHealth());
+        if(Input.GetKeyDown(KeyCode.Space))PController.PlayerOne.DamagePlayer(10);
     }
 
     void DisplayRoundNumber()
