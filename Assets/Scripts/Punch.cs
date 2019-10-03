@@ -36,6 +36,27 @@ public class Punch : MonoBehaviour
             RB.AddForce(PunchForce * PunchDirection.normalized, ForceMode.Impulse);
     }
 
+    float HighestVelocityFromContacts(ContactPoint[] _Contacts)
+    {
+        //Init Velocity
+        Vector3 ReturningValue = Vector3.zero;
+
+        //Itterate through all contact points
+        for(int i = 0; i < _Contacts.Length; i++)
+        {
+            //Get the current contact points velocity
+            Vector3 TempVelocity = RB.GetPointVelocity(_Contacts[i].point);
+            //If the current velocity is greator than the current greatest
+            if (TempVelocity.magnitude > ReturningValue.magnitude)
+            {
+                //Set the new greatest to the current
+                ReturningValue = TempVelocity;
+            }
+        }
+        //Return the Greatest velocity point
+        return ReturningValue.magnitude;
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         //If the object collided with does not apply to own body
@@ -45,18 +66,24 @@ public class Punch : MonoBehaviour
             if (RB.velocity.magnitude > MinimumForceForDamage)
                 //Making sure the enemy is the one being hit
                 if (collision.transform.root.gameObject.name == Enemy.transform.root.gameObject.name)
+                {
+                    ContactPoint[] Contact = new ContactPoint[collision.contactCount];
+                    collision.GetContacts(Contact);
+                    //print(HighestVelocityFromContacts(Contact));
+
                     //Check for both players healths are greator than zero
                     if (PController.PlayerOne.GetHealth() > 0 && PController.PlayerTwo.GetHealth() > 0)
-                    {
                         //Checking if the enemy is Player One
                         if (collision.transform.root.gameObject.name == PController.PlayerOne.Center.transform.root.gameObject.name)
                             //Apply damage to player one
-                            PController.PlayerOne.DamagePlayer((int)(RB.velocity.magnitude * damageScalar));
+                            PController.PlayerOne.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
                         //Or Enemy is Player Two
                         else if (collision.transform.root.gameObject.name == PController.PlayerTwo.Center.transform.root.gameObject.name)
                             //Apply damage to player two
-                            PController.PlayerTwo.DamagePlayer((int)(RB.velocity.magnitude * damageScalar));
-                    }
+                            PController.PlayerTwo.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
+                }
+
+
             //Rigidbody of the Object that was collided with
             Rigidbody HitPointRB = collision.gameObject.GetComponent<Rigidbody>();
 
@@ -64,7 +91,7 @@ public class Punch : MonoBehaviour
             if (HitPointRB != null)
             {
                 //Adds the force the arm was traveling
-                HitPointRB.AddForce(RB.velocity * 2, ForceMode.Impulse);
+                //HitPointRB.AddForce(RB.velocity * 2, ForceMode.Impulse);
                 //print("Pushed " + collision.gameObject.name + " with " + RB.velocity + " force");
             }
         }
