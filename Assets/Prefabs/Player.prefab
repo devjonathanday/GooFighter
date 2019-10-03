@@ -962,8 +962,8 @@ MonoBehaviour:
   d: -80
   target: {fileID: 7696931004049211926}
   inputAxes:
-  - P1Horizontal
-  - P1Vertical
+  - P2Horizontal
+  - P2Vertical
   speed: 0
 --- !u!1 &3578762987915932266
 GameObject:
@@ -1122,8 +1122,8 @@ MonoBehaviour:
   d: -80
   target: {fileID: 7696931003604505520}
   inputAxes:
-  - P1Horizontal
-  - P1Vertical
+  - P2Horizontal
+  - P2Vertical
   speed: 0
 --- !u!1 &3578762987915932270
 GameObject:
@@ -1167,7 +1167,7 @@ GameObject:
   - component: {fileID: 7696931004122128981}
   - component: {fileID: 7696931004122129005}
   - component: {fileID: 7696931004122129003}
-  - component: {fileID: 1337809856}
+  - component: {fileID: 1701990423}
   m_Layer: 0
   m_Name: ForeArm.l
   m_TagString: Untagged
@@ -1315,7 +1315,7 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1337809856
+--- !u!114 &1701990423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1330,7 +1330,7 @@ MonoBehaviour:
   Enemy: {fileID: 0}
   Center: {fileID: 3578762987915932168}
   PController: {fileID: 0}
-  punchInput: P1LeftPunch
+  punchInput: P2LeftPunch
   PunchForce: 5
   MinimumForceForDamage: 5
   damageScalar: 0.1
@@ -1346,7 +1346,7 @@ GameObject:
   - component: {fileID: 7696931004122128977}
   - component: {fileID: 7696931004122128979}
   - component: {fileID: 7696931004122128991}
-  - component: {fileID: 440618539}
+  - component: {fileID: 1701990422}
   m_Layer: 0
   m_Name: ForeArm.r
   m_TagString: Untagged
@@ -1494,7 +1494,7 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &440618539
+--- !u!114 &1701990422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1509,7 +1509,7 @@ MonoBehaviour:
   Enemy: {fileID: 0}
   Center: {fileID: 3578762987915932168}
   PController: {fileID: 0}
-  punchInput: P1RightPunch
+  punchInput: P2RightPunch
   PunchForce: 5
   MinimumForceForDamage: 5
   damageScalar: 0.1
@@ -1561,7 +1561,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b021648bcd047e4d8c920e269a36a9d, type: 2}
+  - {fileID: 2100000, guid: 67010a1e36443b24d8c63e09b4a99932, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1969,8 +1969,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   inputAxes:
-  - P1Horizontal
-  - P1Vertical
+  - P2Horizontal
+  - P2Vertical
 --- !u!1 &7696931004049211927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,5 +2101,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   inputAxes:
-  - P1Horizontal
-  - P1Vertical
+  - P2Horizontal
+  - P2Vertical
