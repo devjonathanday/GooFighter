@@ -14,6 +14,7 @@ public class MoveFootTarget : MonoBehaviour
 
     Vector3 offset;
     float timer;
+    public string[] inputAxes;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class MoveFootTarget : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (GetInput())
         {
             timer += Time.deltaTime;
         }
@@ -38,9 +39,10 @@ public class MoveFootTarget : MonoBehaviour
 
     bool GetInput()
     {
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        for (int i = 0; i < inputAxes.Length; i++)
         {
-            return true;
+            if (Input.GetAxis(inputAxes[i]) != 0)
+                return true;
         }
         return false;
     }

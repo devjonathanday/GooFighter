@@ -13,6 +13,8 @@ public class FootFollow : MonoBehaviour
     private Vector3 errorSum;
     public Transform target;
 
+    public string[] inputAxes;
+
     [SerializeField]
     float speed;
 
@@ -41,7 +43,16 @@ public class FootFollow : MonoBehaviour
 
         speed = correction.magnitude;
 
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (GetInput())
             rb.AddForce(correction * 0.9f);
+    }
+    bool GetInput()
+    {
+        for (int i = 0; i < inputAxes.Length; i++)
+        {
+            if (Input.GetAxis(inputAxes[i]) != 0)
+                return true;
+        }
+        return false;
     }
 }

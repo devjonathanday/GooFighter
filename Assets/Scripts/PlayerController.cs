@@ -62,7 +62,7 @@ public class Player
         Manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
-    public void Update(Vector3 _BodyUpV, Vector3 _HeadUpV, float _Drag)
+    public void Update(Vector3 _BodyUpV, Vector3 _HeadUpV, float _Drag, int playerID)
     {
         RaycastHit hit;
         if (Physics.Raycast(Spine.transform.position, -Vector3.up, out hit, GroundCheckDistance, GroundMask))
@@ -82,7 +82,7 @@ public class Player
             CenterRB.angularVelocity *= _Drag;
         }
 
-        InputController();
+        InputController(playerID);
     }
     void BodyUp(Vector3 _BodyUpV, Vector3 _HeadUpV)
     {
@@ -94,10 +94,20 @@ public class Player
     {
         CenterRB.AddForce(moveDir, ForceMode.Acceleration);
     }
-    void InputController()
+    void InputController(int playerID)
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        float x = 0;
+        float y = 0;
+        if (playerID == 1)
+        {
+            x = Input.GetAxis("P1Horizontal");
+            y = Input.GetAxis("P1Vertical");
+        }
+        if (playerID == 2)
+        {
+            x = Input.GetAxis("P2Horizontal");
+            y = Input.GetAxis("P2Vertical");
+        }
         Vector3 input = new Vector3(x, 0, y).normalized;
 
         float desiredRotation = Mathf.Atan2(input.y, input.x);
@@ -111,6 +121,11 @@ public class Player
         }
 
         Move(input * MoveSpeed);
+
+        if(Input.GetButtonDown("P1LeftPunch"))
+            Debug.Log("Left Ponch");
+        if (Input.GetButtonDown("P1RightPunch"))
+            Debug.Log("Right Ponch");
     }
 
     public void DamagePlayer(int _Damage)
@@ -151,7 +166,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //Update both players
-        PlayerOne.Update(BodyForce, HeadForce, Drag);
-        if (PlayerTwo.Spine != null) PlayerTwo.Update(BodyForce, HeadForce, Drag);
+        PlayerOne.Update(BodyForce, HeadForce, Drag, 1);
+        if (PlayerTwo.Spine != null) PlayerTwo.Update(BodyForce, HeadForce, Drag, 2);
     }
 }

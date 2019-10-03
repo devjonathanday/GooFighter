@@ -10,10 +10,11 @@ public class Punch : MonoBehaviour
     public GameObject Center;
     public PlayerController PController;
 
-    public KeyCode PunchKey;
+    public string punchInput;
 
     public float PunchForce = 3.0f;
     public float MinimumForceForDamage = 0.5f;
+    public float damageScalar;
 
     void Start()
     {
@@ -31,7 +32,8 @@ public class Punch : MonoBehaviour
         //Calculat which direction the player's Center is facing
         Vector3 PunchDirection = Center.transform.forward;//OLD:: (Enemy.transform.position - transform.position);
         //Add a force in the direction of the puch direction
-        if (Input.GetKeyDown(PunchKey)) RB.AddForce(PunchForce * PunchDirection.normalized, ForceMode.Impulse);
+        if (/*Input.GetButtonDown(punchInput) ||*/ Input.GetButtonDown(punchInput))
+            RB.AddForce(PunchForce * PunchDirection.normalized, ForceMode.Impulse);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -49,11 +51,11 @@ public class Punch : MonoBehaviour
                         //Checking if the enemy is Player One
                         if (collision.transform.root.gameObject.name == PController.PlayerOne.Center.transform.root.gameObject.name)
                             //Apply damage to player one
-                            PController.PlayerOne.DamagePlayer(((int)(RB.velocity.magnitude)));
+                            PController.PlayerOne.DamagePlayer((int)(RB.velocity.magnitude * damageScalar));
                         //Or Enemy is Player Two
                         else if (collision.transform.root.gameObject.name == PController.PlayerTwo.Center.transform.root.gameObject.name)
                             //Apply damage to player two
-                            PController.PlayerTwo.DamagePlayer(((int)(RB.velocity.magnitude)));
+                            PController.PlayerTwo.DamagePlayer((int)(RB.velocity.magnitude * damageScalar));
                     }
             //Rigidbody of the Object that was collided with
             Rigidbody HitPointRB = collision.gameObject.GetComponent<Rigidbody>();
