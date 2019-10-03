@@ -8,15 +8,17 @@ public class HealthBar
 {
     public RectTransform MainScalar;
     public RectTransform LossScalar;
-    float StartHealth = 100;
-    float EndHealth = 100;
+    public float LossHealthScalar = 1;
 
-    float TimerVar;
+    float StartHealth = 100;//Where the lerp should start
+    float EndHealth = 100;//Where the lerp should end
+
+    float TimerVar;//Timer Variable for Lerping LossScalar
     public float Timer
     {
         get { return TimerVar; }
         set { TimerVar = Mathf.Clamp(value, 0, 1); }
-    }
+    }//Clamp between 0,1
 
     public void Update(int _Health, int _PreviousHealth)
     {
@@ -33,7 +35,7 @@ public class HealthBar
         //Change the Main health to the New health
         MainScalar.localScale = new Vector3((float)_Health / 100, 1, 1);
         //Update the timer
-        TimerUpdate();
+        TimerUpdate(LossHealthScalar);
         //Lerp the Loss health to the new Low Health
         LossScalar.localScale = new Vector3(Mathf.Lerp((float)StartHealth / 100, (float)_Health / 100, Timer), 1, 1);
     }
@@ -41,9 +43,9 @@ public class HealthBar
     {
         Timer = 0;
     }
-    void TimerUpdate()
+    void TimerUpdate(float _Scalar)
     {
-        Timer += Time.deltaTime;
+        Timer += Time.deltaTime * _Scalar;
     }
 }
 
