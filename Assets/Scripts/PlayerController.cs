@@ -8,6 +8,7 @@ public class Player
     GameManager Manager;
 
     public int IndexNumber;
+    public int EnemyIndexNumber;
 
     //Attributes of each character
     int HealthVar = 100;//Health
@@ -21,7 +22,7 @@ public class Player
             HealthVar = value;
             if (HealthVar <= 0)
             {
-                Manager.SetGameState(GAMESTATE.EndOfRound, IndexNumber);
+                Manager.SetGameState(GAMESTATE.EndOfRound, EnemyIndexNumber);
                 GroundCheckDistance = 0;
                 HealthVar = 0;
             }
