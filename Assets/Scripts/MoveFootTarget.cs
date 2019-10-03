@@ -33,7 +33,16 @@ public class MoveFootTarget : MonoBehaviour
     }
     void FixedUpdate()
     {
-        transform.localPosition = offset + new Vector3(0, (walkCurveY.Evaluate((timer + timeOffset) % 1)) / 100, (walkCurveX.Evaluate((timer + timeOffset) % 1)) / 100);
+        transform.localPosition = offset + new Vector3(0, (walkCurveY.Evaluate((timer + (GetInput() ? timeOffset : 0)) % 1)) / 100, (walkCurveX.Evaluate((timer + (GetInput() ? timeOffset : 0)) % 1)) / 100);
+    }
+
+    bool GetInput()
+    {
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     private void OnDrawGizmos()

@@ -90,7 +90,7 @@ public class Player
 
         if (input.sqrMagnitude != 0)
         {
-            CenterRB.AddForceAtPosition(positionToInput - forwardPos, forwardPos, ForceMode.Impulse);
+            CenterRB.AddForceAtPosition((positionToInput - forwardPos) * RotSpeed, forwardPos, ForceMode.Impulse);
         }
 
         Move(input * MoveSpeed);
