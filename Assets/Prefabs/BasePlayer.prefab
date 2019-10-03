@@ -395,10 +395,10 @@ MonoBehaviour:
   Center: {fileID: 6970096432676692815}
   PController: {fileID: 0}
   punchInput: P1RightPunch
-  PunchForce: 5
-  MinimumForceForDamage: 5
-  damageScalar: 0.1
-  launchSpeed: 0
+  PunchForce: 10
+  MinimumForceForDamage: 1
+  damageScalar: 0.2
+  launchSpeed: 4
 --- !u!114 &6970096431788577159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1663,10 +1663,10 @@ MonoBehaviour:
   Center: {fileID: 6970096432676692815}
   PController: {fileID: 0}
   punchInput: P1LeftPunch
-  PunchForce: 5
-  MinimumForceForDamage: 5
-  damageScalar: 0.1
-  launchSpeed: 0
+  PunchForce: 10
+  MinimumForceForDamage: 1
+  damageScalar: 0.2
+  launchSpeed: 4
 --- !u!114 &6970096433198777450
 MonoBehaviour:
   m_ObjectHideFlags: 0
