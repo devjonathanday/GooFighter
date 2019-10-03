@@ -211,6 +211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 3578762987915932262, guid: 5f226b9148ee96444aab514049c618b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3578762987916029510, guid: 5f226b9148ee96444aab514049c618b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -778,7 +783,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 512
     MoveSpeed: 10
-    RotSpeed: 100
+    RotSpeed: 0.5
     GroundCheckDistance: 0.55
     Head: {fileID: 1637217225}
     Center: {fileID: 2013089153}
@@ -795,7 +800,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 512
     MoveSpeed: 10
-    RotSpeed: 100
+    RotSpeed: 0.5
     GroundCheckDistance: 0.55
     Head: {fileID: 2104207181}
     Center: {fileID: 1364196668}
@@ -806,7 +811,7 @@ MonoBehaviour:
     RotationLerp: 0.5
   HeadForce: {x: 0, y: 1.5, z: 0}
   BodyForce: {x: 0, y: 2, z: 0}
-  Drag: 0.7
+  Drag: 0.9
 --- !u!4 &1459984217
 Transform:
   m_ObjectHideFlags: 0
