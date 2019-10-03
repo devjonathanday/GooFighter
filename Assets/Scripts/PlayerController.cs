@@ -51,7 +51,6 @@ public class Player
     public Rigidbody HeadRB;
 
     bool OnGround;
-    public float RotationLerp;
 
     public void Init()
     {
