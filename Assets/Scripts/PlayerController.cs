@@ -65,25 +65,28 @@ public class Player
 
     public void Update(Vector3 _BodyUpV, Vector3 _HeadUpV, float _Drag, int playerID)
     {
-        RaycastHit hit;
-        if (Physics.Raycast(Spine.transform.position, -Vector3.up, out hit, GroundCheckDistance, GroundMask))
+        if (GetHealth() > 0)
         {
-            OnGround = true;
-            Debug.DrawRay(Spine.transform.position, -Vector3.up * GroundCheckDistance, Color.red);
-            BodyUp(_BodyUpV, _HeadUpV);
-        }
-        else
-        {
-            OnGround = false;
-        }
+            RaycastHit hit;
+            if (Physics.Raycast(Spine.transform.position, -Vector3.up, out hit, GroundCheckDistance, GroundMask))
+            {
+                OnGround = true;
+                Debug.DrawRay(Spine.transform.position, -Vector3.up * GroundCheckDistance, Color.red);
+                BodyUp(_BodyUpV, _HeadUpV);
+            }
+            else
+            {
+                OnGround = false;
+            }
 
-        if (OnGround)
-        {
-            CenterRB.velocity *= _Drag;
-            CenterRB.angularVelocity *= _Drag;
-        }
+            if (OnGround)
+            {
+                CenterRB.velocity *= _Drag;
+                CenterRB.angularVelocity *= _Drag;
+            }
 
-        InputController(playerID);
+            InputController(playerID);
+        }
     }
     void BodyUp(Vector3 _BodyUpV, Vector3 _HeadUpV)
     {
