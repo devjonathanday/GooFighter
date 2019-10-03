@@ -578,6 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerOne:
     IndexNumber: 1
+    EnemyIndexNumber: 0
     Spine: {fileID: 132901598}
     Velocity: {x: 0, y: 0, z: 0}
     GroundMask:
@@ -594,6 +595,7 @@ MonoBehaviour:
     HeadRB: {fileID: 1637217229}
   PlayerTwo:
     IndexNumber: 2
+    EnemyIndexNumber: 0
     Spine: {fileID: 1701990421}
     Velocity: {x: 0, y: 0, z: 0}
     GroundMask:
@@ -1191,12 +1193,12 @@ PrefabInstance:
     - target: {fileID: 7696931004122129003, guid: 5f226b9148ee96444aab514049c618b3,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -5.8207655e-10
+      value: -0.0000000010477378
       objectReference: {fileID: 0}
     - target: {fileID: 7696931004122129003, guid: 5f226b9148ee96444aab514049c618b3,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.0032647455
+      value: 0.0032647478
       objectReference: {fileID: 0}
     - target: {fileID: 7696931004122129003, guid: 5f226b9148ee96444aab514049c618b3,
         type: 3}
@@ -1207,6 +1209,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AngularXMotion
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696931004122129003, guid: 5f226b9148ee96444aab514049c618b3,
+        type: 3}
+      propertyPath: m_LinearLimit.limit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696931004122129003, guid: 5f226b9148ee96444aab514049c618b3,
+        type: 3}
+      propertyPath: m_LinearLimitSpring.spring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696931004122129003, guid: 5f226b9148ee96444aab514049c618b3,
+        type: 3}
+      propertyPath: m_LinearLimitSpring.damper
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7696931004122128991, guid: 5f226b9148ee96444aab514049c618b3,
         type: 3}
@@ -1222,6 +1239,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AngularXMotion
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696931004122128991, guid: 5f226b9148ee96444aab514049c618b3,
+        type: 3}
+      propertyPath: m_LinearLimit.limit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696931004122128991, guid: 5f226b9148ee96444aab514049c618b3,
+        type: 3}
+      propertyPath: m_LinearLimitSpring.spring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696931004122128991, guid: 5f226b9148ee96444aab514049c618b3,
+        type: 3}
+      propertyPath: m_LinearLimitSpring.damper
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7696931004122128983, guid: 5f226b9148ee96444aab514049c618b3,
         type: 3}
