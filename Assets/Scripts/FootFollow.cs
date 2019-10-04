@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Credit to David Warford for base implementation
+
 [RequireComponent(typeof(Rigidbody))]
 public class FootFollow : MonoBehaviour
 {
