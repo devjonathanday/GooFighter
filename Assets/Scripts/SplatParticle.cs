@@ -68,19 +68,6 @@ public class SplatParticle : MonoBehaviour
                 Splashes.RemoveAt(i);
             }
         }
-
-        if(Input.GetKeyDown(KeyCode.V))
-        {
-            DisplayHitParticle(new Vector3(-1, 2, -1), Color.red, new Vector3(1, 1, -1));
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            DisplayHitParticle(new Vector3(0, 2, 4), Color.red, new Vector3(1, 1, -1));
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            DisplayHitParticle(new Vector3(4, 2, 2), Color.red, new Vector3(1, 1, -1));
-        }
     }
     private void OnParticleTrigger()
     {
