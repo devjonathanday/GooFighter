@@ -186,6 +186,17 @@ public class GameManager : MonoBehaviour
         return NewManager;
     }
 
+    public static GameManager FindManager()
+    {
+        GameManager ReturningManager;
+
+        GameObject TempManager = GameObject.FindGameObjectWithTag("GameManager");
+        if (TempManager == null) ReturningManager = CreateMissingManager().GetComponent<GameManager>();
+        else ReturningManager = TempManager.GetComponent<GameManager>();
+
+        return ReturningManager;
+    }
+
     public void ChangePlayer1Color(int colorID)
     {
         Player1ColorID = colorID;
