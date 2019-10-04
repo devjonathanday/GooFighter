@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public int Player1ColorID = 0;
     public int Player2ColorID = 0;
 
+    public Material[] playerColors;
+    public Material[] UIColors;
+
     //0 = Red
     //1 = Yellow
     //2 = Green
