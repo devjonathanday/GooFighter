@@ -22,7 +22,9 @@ public class CustomToggleGroup : MonoBehaviour
     void Start()
     {
         currentSelected.Select();
-        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        GameObject manager = GameObject.FindGameObjectWithTag("GameManager");
+        if (manager == null) GM = GameManager.CreateMissingManager().GetComponent<GameManager>();
+        else manager.GetComponent<GameManager>();
     }
     
     void Update()
