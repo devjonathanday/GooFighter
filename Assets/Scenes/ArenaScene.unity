@@ -795,6 +795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentState: 1
+  HasCheckedRoundNumber: 0
 --- !u!4 &1857428434
 Transform:
   m_ObjectHideFlags: 0
@@ -1073,6 +1074,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 559371883293521450, guid: 260669b5aecb5fe41a06291c578af961,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 559371884842084380, guid: 260669b5aecb5fe41a06291c578af961,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 559371884005166236, guid: 260669b5aecb5fe41a06291c578af961,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1128,11 +1139,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 559371883293521450, guid: 260669b5aecb5fe41a06291c578af961,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 559371884886120967, guid: 260669b5aecb5fe41a06291c578af961,
         type: 3}
       propertyPath: m_Layer
@@ -1166,12 +1172,7 @@ PrefabInstance:
     - target: {fileID: 559371884886121084, guid: 260669b5aecb5fe41a06291c578af961,
         type: 3}
       propertyPath: launchSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 559371884842084380, guid: 260669b5aecb5fe41a06291c578af961,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 559371883443933082, guid: 260669b5aecb5fe41a06291c578af961,
         type: 3}
@@ -1206,7 +1207,7 @@ PrefabInstance:
     - target: {fileID: 559371883443933079, guid: 260669b5aecb5fe41a06291c578af961,
         type: 3}
       propertyPath: launchSpeed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 559371884469790726, guid: 260669b5aecb5fe41a06291c578af961,
         type: 3}
@@ -1296,6 +1297,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 2518803100862951251, guid: 723c737d878f023498c360cf31c2a211,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518803101738201445, guid: 723c737d878f023498c360cf31c2a211,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2518803101505525221, guid: 723c737d878f023498c360cf31c2a211,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1351,11 +1362,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2518803100862951251, guid: 723c737d878f023498c360cf31c2a211,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 2518803101715121022, guid: 723c737d878f023498c360cf31c2a211,
         type: 3}
       propertyPath: m_Layer
@@ -1379,12 +1385,7 @@ PrefabInstance:
     - target: {fileID: 2518803101715120901, guid: 723c737d878f023498c360cf31c2a211,
         type: 3}
       propertyPath: launchSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2518803101738201445, guid: 723c737d878f023498c360cf31c2a211,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2518803100980991715, guid: 723c737d878f023498c360cf31c2a211,
         type: 3}
@@ -1409,7 +1410,7 @@ PrefabInstance:
     - target: {fileID: 2518803100980991726, guid: 723c737d878f023498c360cf31c2a211,
         type: 3}
       propertyPath: launchSpeed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723c737d878f023498c360cf31c2a211, type: 3}
