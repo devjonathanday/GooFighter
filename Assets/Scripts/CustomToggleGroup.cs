@@ -13,12 +13,13 @@ public class CustomToggleGroup : MonoBehaviour
 
     public float inputDelay;
     private float lastInputTime;
-    
+
     public SelectableToggle currentSelected;
     public TextMeshProUGUI readyText;
     public GameManager GM;
 
     public GameObject buttonOrganizer;
+    public CustomToggleGroup otherToggleGroup;
 
     public bool ready;
 
@@ -30,7 +31,7 @@ public class CustomToggleGroup : MonoBehaviour
     {
         currentSelected.Select();
     }
-    
+
     void Update()
     {
         if (!ready && Time.time - lastInputTime > inputDelay)
@@ -56,12 +57,21 @@ public class CustomToggleGroup : MonoBehaviour
                 lastInputTime = Time.time;
             }
         }
+
         if (Input.GetButtonDown(submitButton))
         {
-            ready = true;
-            readyText.text = "Ready!";
-            readyText.color = Color.green;
-            buttonOrganizer.SetActive(false);
+            if (!otherToggleGroup.ready || currentSelected.colorID != otherToggleGroup.currentSelected.colorID)
+            {
+                ready = true;
+                readyText.text = "Ready!";
+                readyText.color = Color.green;
+                buttonOrganizer.SetActive(false);
+            }
+            else
+            {
+                readyText.text = "Already taken!";
+                readyText.color = Color.red;
+            }
         }
         if (Input.GetButtonDown(cancelButton))
         {
