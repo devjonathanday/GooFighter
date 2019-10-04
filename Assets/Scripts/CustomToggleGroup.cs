@@ -13,23 +13,28 @@ public class CustomToggleGroup : MonoBehaviour
 
     public float inputDelay;
     private float lastInputTime;
-    
+
     public SelectableToggle currentSelected;
     public TextMeshProUGUI readyText;
     public GameManager GM;
+
+    public GameObject buttonOrganizer;
+    public CustomToggleGroup otherToggleGroup;
+
     public bool ready;
-    
+
+    private void Awake()
+    {
+        GM = GameManager.FindManager();
+    }
     void Start()
     {
         currentSelected.Select();
-        GameObject manager = GameObject.FindGameObjectWithTag("GameManager");
-        if (manager == null) GM = GameManager.CreateMissingManager().GetComponent<GameManager>();
-        else manager.GetComponent<GameManager>();
     }
-    
+
     void Update()
     {
-        if (Time.time - lastInputTime > inputDelay)
+        if (!ready && Time.time - lastInputTime > inputDelay)
         {
             if (Input.GetAxisRaw(horizontalAxis) < 0)
             {
@@ -52,17 +57,28 @@ public class CustomToggleGroup : MonoBehaviour
                 lastInputTime = Time.time;
             }
         }
+
         if (Input.GetButtonDown(submitButton))
         {
-            ready = true;
-            readyText.text = "Ready!";
-            readyText.color = Color.green;
+            if (!otherToggleGroup.ready || currentSelected.colorID != otherToggleGroup.currentSelected.colorID)
+            {
+                ready = true;
+                readyText.text = "Ready!";
+                readyText.color = Color.green;
+                buttonOrganizer.SetActive(false);
+            }
+            else
+            {
+                readyText.text = "Already taken!";
+                readyText.color = Color.red;
+            }
         }
         if (Input.GetButtonDown(cancelButton))
         {
             ready = false;
             readyText.text = "Deciding...";
             readyText.color = Color.red;
+            buttonOrganizer.SetActive(true);
         }
     }
 }

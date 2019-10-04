@@ -15,6 +15,16 @@ public class SelectableToggle : MonoBehaviour
 
     public UnityEvent selectionEvent;
 
+    public GameManager GM;
+
+    public int playerID;
+    public int colorID;
+
+    private void Awake()
+    {
+        GM = GameManager.FindManager();
+    }
+
     public SelectableToggle SelectOnLeft()
     {
         if (selectionLeft)
@@ -59,6 +69,7 @@ public class SelectableToggle : MonoBehaviour
     {
         selectImage.enabled = true;
         selectionEvent.Invoke();
+        GM.ChangePlayerColor(playerID, colorID);
     }
     public void Deselect()
     {

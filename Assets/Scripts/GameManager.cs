@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public int Player1ColorID = 0;
     public int Player2ColorID = 0;
 
+    public Material[] playerColors;
+    public Material[] UIColors;
+
     //0 = Red
     //1 = Yellow
     //2 = Green
@@ -41,6 +44,8 @@ public class GameManager : MonoBehaviour
 
         //Inits the timer to to max time
         ResetRoundTimer();
+
+        gameObject.name = "GameManager";
     }
 
     void Update()
@@ -197,12 +202,9 @@ public class GameManager : MonoBehaviour
         return ReturningManager;
     }
 
-    public void ChangePlayer1Color(int colorID)
+    public void ChangePlayerColor(int playerID, int colorID)
     {
-        Player1ColorID = colorID;
-    }
-    public void ChangePlayer2Color(int colorID)
-    {
-        Player2ColorID = colorID;
+        if (playerID == 1) Player1ColorID = colorID;
+        if (playerID == 2) Player2ColorID = colorID;
     }
 }
