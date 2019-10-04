@@ -125,11 +125,6 @@ public class Player
         }
 
         Move(input * MoveSpeed);
-
-        if(Input.GetButtonDown("P1LeftPunch"))
-            Debug.Log("Left Ponch");
-        if (Input.GetButtonDown("P1RightPunch"))
-            Debug.Log("Right Ponch");
     }
 
     public void DamagePlayer(int _Damage)

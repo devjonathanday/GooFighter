@@ -99,7 +99,6 @@ public class UpdateUI : MonoBehaviour
         //Updates PlayerOne's health display
         PlayerOneHealth.Update(PController.PlayerOne.GetHealth(), PController.PlayerOne.GetPreviousHealth());
         PlayerTwoHealth.Update(PController.PlayerTwo.GetHealth(), PController.PlayerTwo.GetPreviousHealth());
-        if(Input.GetKeyDown(KeyCode.Space))PController.PlayerOne.DamagePlayer(10);
     }
 
     void DisplayRoundNumber()
