@@ -153,6 +153,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 HeadForce, BodyForce;
     public float Drag;
 
+    public SplatParticle SplatParticleController;
+
     //Players Controls
     //Second Player needs different controls
 

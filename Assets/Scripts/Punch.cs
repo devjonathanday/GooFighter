@@ -40,11 +40,17 @@ public class Punch : MonoBehaviour
 
     float HighestVelocityFromContacts(ContactPoint[] _Contacts)
     {
+        //Return the Greatest velocity point
+        return HighestVelVecFromContacts(_Contacts).magnitude;
+    }
+
+    Vector3 HighestVelVecFromContacts(ContactPoint[] _Contacts)
+    {
         //Init Velocity
         Vector3 ReturningValue = Vector3.zero;
 
         //Itterate through all contact points
-        for(int i = 0; i < _Contacts.Length; i++)
+        for (int i = 0; i < _Contacts.Length; i++)
         {
             //Get the current contact points velocity
             Vector3 TempVelocity = RB.GetPointVelocity(_Contacts[i].point);
@@ -56,7 +62,7 @@ public class Punch : MonoBehaviour
             }
         }
         //Return the Greatest velocity point
-        return ReturningValue.magnitude;
+        return ReturningValue;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -79,12 +85,20 @@ public class Punch : MonoBehaviour
                         if (PController.PlayerOne.GetHealth() > 0 && PController.PlayerTwo.GetHealth() > 0)
                             //Checking if the enemy is Player One
                             if (collision.transform.root.gameObject.name == PController.PlayerOne.Center.transform.root.gameObject.name)
+                            {
                                 //Apply damage to player one
                                 PController.PlayerOne.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
+                                //Particle Effect
+                                PController.SplatParticleController.DisplayHitParticle(HighestVelVecFromContacts(Contact) / 2, Color.green, Contact[0].point);
+                            }
                             //Or Enemy is Player Two
                             else if (collision.transform.root.gameObject.name == PController.PlayerTwo.Center.transform.root.gameObject.name)
+                            {
                                 //Apply damage to player two
                                 PController.PlayerTwo.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
+                                //Particle Effect
+                                PController.SplatParticleController.DisplayHitParticle(HighestVelVecFromContacts(Contact) / 2, Color.red, Contact[0].point);
+                            }
                     }
                 }
 

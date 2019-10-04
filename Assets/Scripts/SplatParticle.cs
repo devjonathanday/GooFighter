@@ -10,9 +10,10 @@ public class SplatParticle : MonoBehaviour
         public GameObject CurrentObject;
         public float LifeTimer;
 
-        public SplashTracker(GameObject _Current, float _LifeTimer)
+        public SplashTracker(GameObject _Current, float _LifeTimer, Color _Color)
         {
             CurrentObject = _Current;
+            CurrentObject.GetComponent<Renderer>().material.color = _Color;
             LifeTimer = _LifeTimer;
         }
         public void UpdateSplash()
@@ -33,15 +34,23 @@ public class SplatParticle : MonoBehaviour
     //All the current splashes in the game
     public List<SplashTracker> Splashes = new List<SplashTracker>();
 
+    //Particles to be Emmited
+    public int AmountOfGoo = 20;
+
     //Current Particle System
     ParticleSystem Particle;
     //Current list of Collision events from Particle system
-    List<ParticleCollisionEvent> CollisionEvents = new List<ParticleCollisionEvent>();
+    //List<ParticleCollisionEvent> CollisionEvents = new List<ParticleCollisionEvent>();
+    List<ParticleSystem.Particle> ParticlesHaveEntered = new List<ParticleSystem.Particle>(); 
+    //Normal Particles
+    ParticleSystem OtherParticles;
 
     void Start()
     {
         //Set the Current gameobjects particlesystem
         Particle = GetComponent<ParticleSystem>();
+        //Set the OtherParticles to the Normal Particle System
+        OtherParticles = transform.parent.GetChild(0).GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -59,26 +68,79 @@ public class SplatParticle : MonoBehaviour
                 Splashes.RemoveAt(i);
             }
         }
-    }
-    void OnParticleCollision(GameObject other)
-    {
-        //Sets the CollisionEvents to the Particles collision event, And gets the cound from it 
-        int CollisionEventCount = Particle.GetCollisionEvents(other, CollisionEvents);
 
-        //Gets the Rigidbody of the object collided with
-        Rigidbody RB = other.GetComponent<Rigidbody>();
-        //Checks to see if the rigidbody exists
-        if(RB != null)
+        if(Input.GetKeyDown(KeyCode.V))
         {
-            for(int i = 0; i < CollisionEventCount; i++)
-            {
-                //Gets the intersection point of where the collider collided
-                Vector3 IntersectionPoint = CollisionEvents[i].intersection;
-                Splashes.Add(new SplashTracker(Instantiate(SplashObjectPrefab, IntersectionPoint,SplashObjectPrefab.transform.rotation, other.transform), SplashLifeTime));
-            }
+            DisplayHitParticle(new Vector3(-1, 2, -1), Color.red, new Vector3(1, 1, -1));
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            DisplayHitParticle(new Vector3(0, 2, 4), Color.red, new Vector3(1, 1, -1));
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            DisplayHitParticle(new Vector3(4, 2, 2), Color.red, new Vector3(1, 1, -1));
+        }
+    }
+    private void OnParticleTrigger()
+    {
+        //Get the count of and sets the Particles that have entered the space
+        int ParticlesEnterCount = Particle.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, ParticlesHaveEntered);
+
+        //Goes through all particles that have been triggered
+        for (int i = 0; i < ParticlesEnterCount; i++)
+        {
+            //Gets the position of where they should be
+            Vector3 NewPosition = new Vector3(ParticlesHaveEntered[i].position.x, 0.1f, ParticlesHaveEntered[i].position.z);
+            //Creates the splash
+            Splashes.Add(new SplashTracker(Instantiate(SplashObjectPrefab, NewPosition, SplashObjectPrefab.transform.rotation), SplashLifeTime, ParticlesHaveEntered[i].startColor));
         }
     }
 
 
-    //TODO::Create a function that takes in the Velocity,Color, and Position (Hit point) and play the burst of animation
+    public void DisplayHitParticle(Vector3 _Velocity, Color _Color, Vector3 _Position)
+    {
+        //Changes the position of where the particles should spawn
+        transform.parent.position = _Position;
+
+        //Set the start color of the Paricles
+        OtherParticles.startColor = Particle.startColor = _Color;
+
+        //Emit both particle effects (Normal Particles and Collision particle)
+        //Using Emit, as I want Particles to spawn RIGHT NOW rather than when Play wants them to
+        Particle.Emit(1);
+        
+        OtherParticles.Emit(AmountOfGoo);
+
+        //Sets the velocity of the particles
+        SetParticleVelocity(_Velocity, Particle, true);
+        SetParticleVelocity(_Velocity, OtherParticles, false);
+    }
+
+    void SetParticleVelocity(Vector3 _Velocity, ParticleSystem _ParticleSystem, bool _CollisionParticle)
+    {
+        //Create new array of particles the size of the old array
+        ParticleSystem.Particle[] Particles = new ParticleSystem.Particle[_ParticleSystem.particleCount];
+        //Set the new array equal to the new array
+        _ParticleSystem.GetParticles(Particles);
+
+        if (_CollisionParticle)
+        {
+            //Set Last Added Particle to correct velocity
+            Particles[Particles.Length - 1].velocity = _Velocity;
+        }
+        else
+        {
+            //Set Last AmountOfGoo particles to the correct Velocity
+            //Move through the new array
+            for (int i = Particles.Length - 1; i > (Particles.Length - AmountOfGoo) - 1; i--)
+            {
+                //Set each Particles velocity to the Desired Velocity
+                Particles[i].velocity = _Velocity;
+            }
+        }
+
+        //Set the old particle array to the new one
+        _ParticleSystem.SetParticles(Particles);
+    }
 }
