@@ -648,6 +648,7 @@ MonoBehaviour:
   HeadForce: {x: 0, y: 1.5, z: 0}
   BodyForce: {x: 0, y: 2, z: 0}
   Drag: 0.9
+  SplatParticleController: {fileID: 0}
 --- !u!4 &1459984217
 Transform:
   m_ObjectHideFlags: 0
@@ -796,6 +797,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 1
   HasCheckedRoundNumber: 0
+  Player1ColorID: 0
+  Player2ColorID: 0
+  playerColors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  UIColors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1857428434
 Transform:
   m_ObjectHideFlags: 0
@@ -1047,6 +1064,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -40.32007
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701299399064889921, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -112.600006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b87fb12bdbce24f9148597d0e0ee82, type: 3}

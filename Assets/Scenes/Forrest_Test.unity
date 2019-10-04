@@ -10152,7 +10152,7 @@ Transform:
   - {fileID: 546204684}
   - {fileID: 7346062}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1159368316
 PrefabInstance:
@@ -10703,6 +10703,20 @@ MonoBehaviour:
   HasCheckedRoundNumber: 0
   Player1ColorID: 0
   Player2ColorID: 0
+  playerColors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  UIColors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1857428434
 Transform:
   m_ObjectHideFlags: 0
@@ -10715,7 +10729,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1888440528
 GameObject:

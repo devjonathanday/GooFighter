@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     public Material[] playerColors;
     public Material[] UIColors;
 
+    public int? LastWinner = null;
+
+
     //0 = Red
     //1 = Yellow
     //2 = Green
@@ -108,6 +111,7 @@ public class GameManager : MonoBehaviour
         //If the Current state is the end of round
         if (CurrentState == GAMESTATE.EndOfRound)
         {
+            LastWinner = _PlayerNumber;
             //Record which player won
             IncreasePlayerScore(_PlayerNumber);
             //Set Round ending timer
