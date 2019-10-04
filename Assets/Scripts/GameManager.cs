@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public GAMESTATE CurrentState;//Current state of the game
     int Round = 0;//Which round is current
+    public bool HasCheckedRoundNumber = false;//Checks to see if the 
 
     int Player1Score = 0;//Score For Player One
     int Player2Score = 0;//Score For Player Two
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     //Round functions
     public void NextRound()
     {
+        HasCheckedRoundNumber = false;
         Round++;
     }
     public int GetRound()

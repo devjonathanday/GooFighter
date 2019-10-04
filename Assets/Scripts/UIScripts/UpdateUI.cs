@@ -90,8 +90,14 @@ public class UpdateUI : MonoBehaviour
 
     void Update()
     {
-        //Displays correct Object for the Round number
-        DisplayRoundNumber();
+        //CHeck to see if the round has changed
+        if (!Manager.HasCheckedRoundNumber)
+        {
+            //Displays correct Object for the Round number
+            DisplayRoundNumber();
+            //Displayed the round number and will not check again until the round has changed again
+            Manager.HasCheckedRoundNumber = true;
+        }
         //Displays both of the players Wins
         DisplayWins();
         //Displays the round timer if the object exists
