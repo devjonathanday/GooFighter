@@ -15,6 +15,16 @@ public class GameManager : MonoBehaviour
 
     int Player1Score = 0;//Score For Player One
     int Player2Score = 0;//Score For Player Two
+    
+    public int Player1ColorID = 0;
+    public int Player2ColorID = 0;
+
+    //0 = Red
+    //1 = Yellow
+    //2 = Green
+    //3 = Blue
+    //4 = Pink
+    //5 = Black
 
     float MaxRoundTimer = 180.0f;//Reset time for the Timer
     float RoundTimer;//Round timer
@@ -174,5 +184,14 @@ public class GameManager : MonoBehaviour
         NewManager.tag = "GameManager";
         NewManager.AddComponent<GameManager>();
         return NewManager;
+    }
+
+    public void ChangePlayer1Color(int colorID)
+    {
+        Player1ColorID = colorID;
+    }
+    public void ChangePlayer2Color(int colorID)
+    {
+        Player2ColorID = colorID;
     }
 }
