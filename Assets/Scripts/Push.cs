@@ -16,9 +16,9 @@ public class Push : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(Vector3.up * forceMultiplier, ForceMode.Impulse);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    rb.AddForce(Vector3.up * forceMultiplier, ForceMode.Impulse);
+        //}
     }
 }

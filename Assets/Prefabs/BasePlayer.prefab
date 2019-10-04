@@ -397,7 +397,7 @@ MonoBehaviour:
   punchInput: P1RightPunch
   PunchForce: 10
   MinimumForceForDamage: 1
-  damageScalar: 0.2
+  damageScalar: 0.15
   launchSpeed: 4
 --- !u!114 &6970096431788577159
 MonoBehaviour:
@@ -1665,7 +1665,7 @@ MonoBehaviour:
   punchInput: P1LeftPunch
   PunchForce: 10
   MinimumForceForDamage: 1
-  damageScalar: 0.2
+  damageScalar: 0.15
   launchSpeed: 4
 --- !u!114 &6970096433198777450
 MonoBehaviour:

@@ -18,13 +18,6 @@ public class ColliderStretch : MonoBehaviour
     void Update()
     {
         float distance = (connectedBody.position - transform.position).magnitude;
-        /*
-        if(distance > maxStretchDistance)
-        {
-            rBody.velocity = Vector3.zero;
-            transform.position = (transform.position - connectedBody.position)
-        }
-        */
         capsule.height = distance * defaultHeight * scalar;
     }
 }

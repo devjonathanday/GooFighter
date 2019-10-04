@@ -67,24 +67,26 @@ public class Punch : MonoBehaviour
             //Checking to see how much force the player is hitting the enemy with
             if (RB.velocity.magnitude > MinimumForceForDamage)
                 //Making sure the enemy is the one being hit
-                if (collision.transform.root.gameObject.name == Enemy.transform.root.gameObject.name)
+                if (Enemy != null)
                 {
-                    ContactPoint[] Contact = new ContactPoint[collision.contactCount];
-                    collision.GetContacts(Contact);
-                    //print(HighestVelocityFromContacts(Contact));
+                    if (collision.transform.root.gameObject.name == Enemy.transform.root.gameObject.name)
+                    {
+                        ContactPoint[] Contact = new ContactPoint[collision.contactCount];
+                        collision.GetContacts(Contact);
+                        //print(HighestVelocityFromContacts(Contact));
 
-                    //Check for both players healths are greator than zero
-                    if (PController.PlayerOne.GetHealth() > 0 && PController.PlayerTwo.GetHealth() > 0)
-                        //Checking if the enemy is Player One
-                        if (collision.transform.root.gameObject.name == PController.PlayerOne.Center.transform.root.gameObject.name)
-                            //Apply damage to player one
-                            PController.PlayerOne.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
-                        //Or Enemy is Player Two
-                        else if (collision.transform.root.gameObject.name == PController.PlayerTwo.Center.transform.root.gameObject.name)
-                            //Apply damage to player two
-                            PController.PlayerTwo.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
+                        //Check for both players healths are greator than zero
+                        if (PController.PlayerOne.GetHealth() > 0 && PController.PlayerTwo.GetHealth() > 0)
+                            //Checking if the enemy is Player One
+                            if (collision.transform.root.gameObject.name == PController.PlayerOne.Center.transform.root.gameObject.name)
+                                //Apply damage to player one
+                                PController.PlayerOne.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
+                            //Or Enemy is Player Two
+                            else if (collision.transform.root.gameObject.name == PController.PlayerTwo.Center.transform.root.gameObject.name)
+                                //Apply damage to player two
+                                PController.PlayerTwo.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
+                    }
                 }
-
 
             //Rigidbody of the Object that was collided with
             Rigidbody HitPointRB = collision.gameObject.GetComponent<Rigidbody>();

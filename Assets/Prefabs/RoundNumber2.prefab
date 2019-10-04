@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7799218841112501332}
   - component: {fileID: 7515225450544278224}
   - component: {fileID: 5630719697410451936}
+  - component: {fileID: 7273948679584417771}
   m_Layer: 5
   m_Name: RoundNumber2
   m_TagString: Untagged
@@ -82,3 +83,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &7273948679584417771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499051508587950243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a1d2524d7942346aab3b51a7bdc056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceSpeed: 15
+  fallForce: 1
+  stiffness: 0.5
