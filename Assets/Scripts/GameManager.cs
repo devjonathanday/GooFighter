@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GAMESTATE { MainMenu, Rounds, EndOfRound, TransitionRound}
+public enum GAMESTATE { MainMenu, ColorSelect, Rounds, EndOfRound, TransitionRound}
 
 public class GameManager : MonoBehaviour
 {
@@ -20,11 +20,11 @@ public class GameManager : MonoBehaviour
     public int Player2ColorID = 0;
 
     public Material[] playerColors;
-    public Material[] UIColors;
+
+    public string roundsSceneName;
 
     public int? LastWinner = null;
-
-
+    
     //0 = Red
     //1 = Yellow
     //2 = Green
@@ -92,6 +92,12 @@ public class GameManager : MonoBehaviour
     public void SetGameState(GAMESTATE _NewState)
     {
         CurrentState = _NewState;
+
+        if (CurrentState == GAMESTATE.Rounds)
+        {
+            //Go to Rounds
+            SceneManager.LoadScene(roundsSceneName);
+        }
 
         //If the Current state is the end of round
         if (CurrentState == GAMESTATE.TransitionRound)
