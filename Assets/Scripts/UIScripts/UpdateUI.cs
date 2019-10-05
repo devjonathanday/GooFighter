@@ -116,7 +116,10 @@ public class UpdateUI : MonoBehaviour
         }
         //Set the current round number to appear
         //If the round is greator than the max rounds, the display is the max rounds
-        NumberObjects[(Manager.GetRound() < NumberObjects.Length) ? Manager.GetRound() : NumberObjects.Length - 1].SetActive(true);
+        var currentNumber = NumberObjects[(Manager.GetRound() < NumberObjects.Length) ? Manager.GetRound() : NumberObjects.Length - 1];
+        var numRenderer = currentNumber.GetComponent<Renderer>();
+        numRenderer.material.SetFloat("_WobbleStart", Time.time);
+        currentNumber.SetActive(true);
     }
     void DisplayTimer()
     {

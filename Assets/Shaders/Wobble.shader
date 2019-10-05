@@ -5,17 +5,21 @@
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
-        _Metallic ("Metallic", Range(0,1)) = 0.0
         [HDR] _Emission ("Emission", color) = (0,0,0)
 
-        _Amplitude ("Wave Size", Range(0,1)) = 0.4
-        _Frequency ("Wave Frequency", Range(1, 8)) = 2
-        _AnimationSpeed ("Animation Speed", Range(0, 5)) = 1
+        _RampTex ("Wobble Ramp", 2D) = "white" {}
+
+        _Amplitude ("Wave Size", Range(0,1)) = 0.2
+        _Frequency ("Wave Frequency", Range(0, 8)) = 1.5
+        _AnimationSpeed ("Animation Speed", Float) = 5
+
+        _WobbleStart ("Wobble Start", Float) = 0
+        _WobbleDuration("Wobble Duration", Float) = 2
     }
     SubShader
     {
         Tags { "RenderType"="Opaque" }
-        LOD 200
+        LOD 100
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
@@ -25,10 +29,14 @@
         #pragma target 3.0
 
         sampler2D _MainTex;
+        sampler2D _RampTex;
 
         float _Amplitude;
         float _Frequency;
         float _AnimationSpeed;
+
+        float _WobbleStart;
+        float _WobbleDuration;
 
         struct Input
         {
@@ -39,20 +47,26 @@
         half _Metallic;
         fixed4 _Color;
 
+        float rLerp(float lhs, float rhs, float t)
+        {
+            return (t - lhs) / (rhs - lhs);
+        }
+
 		void vert(inout appdata_full data)
 		{
             float4 modifiedPos = data.vertex;
-			modifiedPos.y += sin(data.vertex.x * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
-            modifiedPos.x += sin(data.vertex.y * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
+            float ramp = tex2Dlod(_RampTex, float4((_Time.y - _WobbleStart) / _WobbleDuration, 0, 0, 0)).r;
+            //ramp = 0.0f;
+            //float amplitudeModifier = max(rLerp(_WobbleStart + _WobbleDuration, _WobbleStart, _Time.y), 0);
+
+			modifiedPos.xyz += (sin((data.vertex.x + _Time * _AnimationSpeed) * _Frequency) + cos((data.vertex.z + _Time.y * _AnimationSpeed) * _Frequency)) * (_Amplitude * ramp);
 
             float3 posPlusTangent = data.vertex + data.tangent * 0.01;
-            posPlusTangent.y += sin(posPlusTangent.x * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
-            posPlusTangent.x += sin(posPlusTangent.y * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
+            posPlusTangent.xyz += (sin((data.vertex.x + _Time * _AnimationSpeed) * _Frequency) + cos((data.vertex.z + _Time.y * _AnimationSpeed) * _Frequency)) * (_Amplitude * ramp);
 
             float3 bitangent = cross(data.normal, data.tangent);
             float3 posPlusBitangent = data.vertex + bitangent * 0.01;
-            posPlusBitangent.y += sin(posPlusBitangent.x * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
-            posPlusBitangent.x += sin(posPlusBitangent.y * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
+            posPlusBitangent.xyz += (sin((data.vertex.x + _Time * _AnimationSpeed) * _Frequency)+ cos((data.vertex.z + _Time.y * _AnimationSpeed) * _Frequency)) * (_Amplitude * ramp);
 
             float3 modifiedTangent = posPlusTangent - modifiedPos;
             float3 modifiedBitangent = posPlusBitangent - modifiedPos;
@@ -67,12 +81,9 @@
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
-            // Metallic and smoothness come from slider variables
-            o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
         }
         ENDCG
     }
-    FallBack "Diffuse"
 }
