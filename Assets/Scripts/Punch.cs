@@ -6,6 +6,8 @@ public class Punch : MonoBehaviour
 {
     Rigidbody RB;
 
+    GameManager Manager;
+
     public GameObject Enemy;
     public GameObject Center;
     public PlayerController PController;
@@ -21,6 +23,7 @@ public class Punch : MonoBehaviour
     void Start()
     {
         RB = GetComponent<Rigidbody>();
+        Manager = GameManager.FindManager();
     }
     void Update()
     {
@@ -89,7 +92,7 @@ public class Punch : MonoBehaviour
                                 //Apply damage to player one
                                 PController.PlayerOne.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
                                 //Particle Effect
-                                PController.SplatParticleController.DisplayHitParticle(HighestVelVecFromContacts(Contact) / 2, Color.green, Contact[0].point);
+                                PController.SplatParticleController.DisplayHitParticle(HighestVelVecFromContacts(Contact) / 2, Manager.playerColors[Manager.Player1ColorID].color, Contact[0].point);
                             }
                             //Or Enemy is Player Two
                             else if (collision.transform.root.gameObject.name == PController.PlayerTwo.Center.transform.root.gameObject.name)
@@ -97,7 +100,7 @@ public class Punch : MonoBehaviour
                                 //Apply damage to player two
                                 PController.PlayerTwo.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
                                 //Particle Effect
-                                PController.SplatParticleController.DisplayHitParticle(HighestVelVecFromContacts(Contact) / 2, Color.red, Contact[0].point);
+                                PController.SplatParticleController.DisplayHitParticle(HighestVelVecFromContacts(Contact) / 2, Manager.playerColors[Manager.Player2ColorID].color, Contact[0].point);
                             }
                     }
                 }
