@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterSelection.unity
     guid: 849d260714be88d48b57fefdbc9bf0b1
   - enabled: 1
-    path: Assets/Scenes/Jonathan2.unity
+    path: Assets/Scenes/Playground.unity
     guid: ef8f405047adb7a4284876367efeb8b9
   - enabled: 1
     path: Assets/Scenes/Marcel.unity
