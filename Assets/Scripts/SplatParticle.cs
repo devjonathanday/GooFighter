@@ -9,48 +9,64 @@ public class SplatParticle : MonoBehaviour
     {
         public GameObject CurrentObject;
         public float LifeTimer;
+        Renderer CurrentMaterial;
 
         public SplashTracker(GameObject _Current, float _LifeTimer, Color _Color)
         {
             CurrentObject = _Current;
-            CurrentObject.GetComponent<Renderer>().material.color = _Color;
+            CurrentMaterial = CurrentObject.GetComponent<Renderer>();
+            CurrentMaterial.material.color = _Color;
             LifeTimer = _LifeTimer;
         }
-        public void UpdateSplash()
+        public void SetColor(Color _Color)
+        {
+            CurrentMaterial.material.color = _Color;
+        }
+        public void UpdateSplash(bool _Fade)
         {
             LifeTimer -= Time.deltaTime;
+            if(_Fade)CurrentMaterial.material.color = new Color(CurrentMaterial.material.color.r, CurrentMaterial.material.color.g, CurrentMaterial.material.color.b, Mathf.Clamp(LifeTimer,0,1));
         }
-        public void DeAllocate()
+        public void DeAllocate(List<SplashTracker> _Recycle)
         {
-            Destroy(CurrentObject);
+            _Recycle.Add(this);
+            CurrentObject.SetActive(false);            
         }
     }
 
     //Object to be placed into scene to show where splash had landed
     public GameObject SplashObjectPrefab;
+    public GameObject GooHolder;
     //Life time for the splashes
     public float SplashLifeTime;
 
     //All the current splashes in the game
-    public List<SplashTracker> Splashes = new List<SplashTracker>();
+    List<SplashTracker> Splashes = new List<SplashTracker>();
+
+    //All the Recycled Splashes
+    List<SplashTracker> RecycledSplashes = new List<SplashTracker>();
 
     //Particles to be Emmited
     public int AmountOfGoo = 20;
+
+    //Fades GooSplash out of existance
+    public bool FadeSplash = false;
 
     //Current Particle System
     ParticleSystem Particle;
     //Current list of Collision events from Particle system
     //List<ParticleCollisionEvent> CollisionEvents = new List<ParticleCollisionEvent>();
-    List<ParticleSystem.Particle> ParticlesHaveEntered = new List<ParticleSystem.Particle>(); 
+    List<ParticleSystem.Particle> ParticlesHaveEntered = new List<ParticleSystem.Particle>();
     //Normal Particles
-    ParticleSystem OtherParticles;
+    //ParticleSystem OtherParticles;
+    
 
     void Start()
     {
         //Set the Current gameobjects particlesystem
         Particle = GetComponent<ParticleSystem>();
         //Set the OtherParticles to the Normal Particle System
-        OtherParticles = transform.parent.GetChild(0).GetComponent<ParticleSystem>();
+        //OtherParticles = transform.parent.GetChild(0).GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -59,11 +75,11 @@ public class SplatParticle : MonoBehaviour
         for(int i = 0; i < Splashes.Count; i++)
         {
             //Update each splash
-            Splashes[i].UpdateSplash();
+            Splashes[i].UpdateSplash(FadeSplash);
             //If the splash is out of time
             if(Splashes[i].LifeTimer <= 0)
             {
-                Splashes[i].DeAllocate();
+                Splashes[i].DeAllocate(RecycledSplashes);
                 //Remove the splash
                 Splashes.RemoveAt(i);
             }
@@ -79,8 +95,34 @@ public class SplatParticle : MonoBehaviour
         {
             //Gets the position of where they should be
             Vector3 NewPosition = new Vector3(ParticlesHaveEntered[i].position.x, 0.1f, ParticlesHaveEntered[i].position.z);
-            //Creates the splash
-            Splashes.Add(new SplashTracker(Instantiate(SplashObjectPrefab, NewPosition, SplashObjectPrefab.transform.rotation), SplashLifeTime, ParticlesHaveEntered[i].startColor));
+
+            if (RecycledSplashes.Count > 0)
+            {
+                //Get the Particle
+                SplashTracker RecycledSplash = RecycledSplashes[0];
+                //Remove Particle from the Recycled List
+                RecycledSplashes.RemoveAt(0);
+
+                //Set the position of the Recycled Particles
+                RecycledSplash.CurrentObject.transform.position = NewPosition;
+
+                //Sets the correct color
+                RecycledSplash.SetColor(ParticlesHaveEntered[i].startColor);
+
+                //Sets the timer back to max
+                RecycledSplash.LifeTimer = SplashLifeTime;
+
+                //Dumby you forgot to enable to object
+                RecycledSplash.CurrentObject.SetActive(true);
+
+                //Adds the recycled Splashes to the Splash List
+                Splashes.Add(RecycledSplash);
+            }
+            else
+            {
+                //Creates the splash
+                Splashes.Add(new SplashTracker(Instantiate(SplashObjectPrefab, NewPosition, SplashObjectPrefab.transform.rotation, GooHolder.transform), SplashLifeTime, ParticlesHaveEntered[i].startColor));
+            }
         }
     }
 
@@ -91,17 +133,18 @@ public class SplatParticle : MonoBehaviour
         transform.parent.position = _Position;
 
         //Set the start color of the Paricles
-        OtherParticles.startColor = Particle.startColor = _Color;
-
+#pragma warning disable 0618
+        Particle.startColor = Particle.startColor = _Color;
+#pragma warning restore 0618
         //Emit both particle effects (Normal Particles and Collision particle)
         //Using Emit, as I want Particles to spawn RIGHT NOW rather than when Play wants them to
         Particle.Emit(1);
-        
-        OtherParticles.Emit(AmountOfGoo);
+
+        Particle.Emit(AmountOfGoo);
 
         //Sets the velocity of the particles
         SetParticleVelocity(_Velocity, Particle, true);
-        SetParticleVelocity(_Velocity, OtherParticles, false);
+        SetParticleVelocity(_Velocity, Particle, false);
     }
 
     void SetParticleVelocity(Vector3 _Velocity, ParticleSystem _ParticleSystem, bool _CollisionParticle)
