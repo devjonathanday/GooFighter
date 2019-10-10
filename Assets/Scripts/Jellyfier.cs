@@ -30,11 +30,6 @@ public class Jellyfier : MonoBehaviour
         UpdateVertices();
     }
 
-    private void OnEnable()
-    {
-        ApplyPressureToPoint(transform.position, fallForce);
-    }
-
     private void UpdateVertices()
     {
         for (int i = 0; i < jellyVerts.Length; i++)
@@ -85,9 +80,19 @@ public class Jellyfier : MonoBehaviour
     }
     public void ApplyPressureToPoint(Vector3 _point, float _pressure)
     {
+        Debug.Log("trying jiggle");
         for (int i = 0; i < jellyVerts.Length; i++)
         {
             jellyVerts[i].ApplyPressureToVertex(transform, _point, _pressure);
+        }
+    }
+    public void ApplyPressureToRandomPoint(float _pressure)
+    {
+        Debug.Log("trying random jiggle");
+        Vector3 randPoint = jellyVerts[Random.Range(0, jellyVerts.Length - 1)].currentVertexPosition;
+        for (int i = 0; i < jellyVerts.Length; i++)
+        {
+            jellyVerts[i].ApplyPressureToVertex(transform, randPoint, _pressure);
         }
     }
 }

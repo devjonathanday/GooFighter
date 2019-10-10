@@ -86,6 +86,8 @@ public class UpdateUI : MonoBehaviour
         Manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         //If no game manager, create another
         if (Manager == null) Manager = GameManager.CreateMissingManager().GetComponent<GameManager>();
+
+        DisplayRoundNumber();
     }
 
     void Update()
@@ -116,7 +118,10 @@ public class UpdateUI : MonoBehaviour
         }
         //Set the current round number to appear
         //If the round is greator than the max rounds, the display is the max rounds
-        NumberObjects[(Manager.GetRound() < NumberObjects.Length) ? Manager.GetRound() : NumberObjects.Length - 1].SetActive(true);
+        var currentNumber = NumberObjects[(Manager.GetRound() < NumberObjects.Length) ? Manager.GetRound() : NumberObjects.Length - 1];
+        var numRenderer = currentNumber.GetComponent<Renderer>();
+        numRenderer.material.SetFloat("_WobbleStart", Time.time);
+        currentNumber.SetActive(true);
     }
     void DisplayTimer()
     {
@@ -167,7 +172,14 @@ public class UpdateUI : MonoBehaviour
             PlayerTwoScoreObjects[(i < PlayerOneScoreObjects.Length) ? i : PlayerOneScoreObjects.Length].SetActive(false);
         }
         //Set the correct one to true
-        PlayerOneScoreObjects[(Manager.GetPlayerScore(1) < PlayerOneScoreObjects.Length) ? Manager.GetPlayerScore(1) : PlayerOneScoreObjects.Length - 1].SetActive(true);
-        PlayerTwoScoreObjects[(Manager.GetPlayerScore(2) < PlayerTwoScoreObjects.Length) ? Manager.GetPlayerScore(2) : PlayerTwoScoreObjects.Length - 1].SetActive(true);
+        var p1Score = PlayerOneScoreObjects[(Manager.GetPlayerScore(1) < PlayerOneScoreObjects.Length) ? Manager.GetPlayerScore(1) : PlayerOneScoreObjects.Length - 1];
+        var p2Score = PlayerTwoScoreObjects[(Manager.GetPlayerScore(2) < PlayerTwoScoreObjects.Length) ? Manager.GetPlayerScore(2) : PlayerTwoScoreObjects.Length - 1];
+        var p1Renderer = p1Score.GetComponent<Renderer>();
+        var p2Renderer = p2Score.GetComponent<Renderer>();
+
+        p1Score.SetActive(true);
+        p1Renderer.material.SetFloat("WobbleStart", Time.time);
+        p2Score.SetActive(true);
+        p2Renderer.material.SetFloat("WobbleStart", Time.time);
     }
 }

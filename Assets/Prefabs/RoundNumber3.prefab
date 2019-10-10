@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6198321141221740423}
   - component: {fileID: 5941314095460464899}
   - component: {fileID: 8366823553381333555}
-  - component: {fileID: 3792482989780354279}
   m_Layer: 5
   m_Name: RoundNumber3
   m_TagString: Untagged
@@ -63,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b021648bcd047e4d8c920e269a36a9d, type: 2}
+  - {fileID: 2100000, guid: 6a135af06c0ec4e47bfd48d102173322, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,18 +82,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3792482989780354279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312841332115268464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72a1d2524d7942346aab3b51a7bdc056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounceSpeed: 15
-  fallForce: 1
-  stiffness: 0.5
