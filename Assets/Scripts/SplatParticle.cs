@@ -34,6 +34,9 @@ public class SplatParticle : MonoBehaviour
         }
     }
 
+    //Y Offset
+    public float YOffset = .1f;
+
     //Object to be placed into scene to show where splash had landed
     public GameObject SplashObjectPrefab;
     //The holder of all the splashes
@@ -90,7 +93,7 @@ public class SplatParticle : MonoBehaviour
         for (int i = 0; i < ParticlesEnterCount; i++)
         {
             //Gets the position of where they should be
-            Vector3 NewPosition = new Vector3(ParticlesHaveEntered[i].position.x, 0.1f, ParticlesHaveEntered[i].position.z);
+            Vector3 NewPosition = new Vector3(ParticlesHaveEntered[i].position.x, YOffset, ParticlesHaveEntered[i].position.z);
 
             if (RecycledSplashes.Count > 0)
             {
