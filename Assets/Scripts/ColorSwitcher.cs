@@ -31,6 +31,6 @@ public class ColorSwitcher : MonoBehaviour
         for (int i = 4; i < Player2UI.Length; i++)
             Player2UI[i].material = UIColors[GM.Player2ColorID];
         for (int i = 0; i < 4; i++)
-            Player2UI[i].material = UIColors[GM.Player2ColorID];
+            Player2UI[i].material = jiggleMaterials[GM.Player2ColorID];
     }
 }

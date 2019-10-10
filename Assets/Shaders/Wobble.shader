@@ -23,10 +23,9 @@
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows vertex:vert addshadow
+        #pragma surface surf Standard vertex:vert
 
-        // Use shader model 3.0 target, to get nicer looking lighting
-        #pragma target 3.0
+        #pragma target 4.0
 
         sampler2D _MainTex;
         sampler2D _RampTex;
@@ -56,8 +55,6 @@
 		{
             float4 modifiedPos = data.vertex;
             float ramp = tex2Dlod(_RampTex, float4((_Time.y - _WobbleStart) / _WobbleDuration, 0, 0, 0)).r;
-            //ramp = 0.0f;
-            //float amplitudeModifier = max(rLerp(_WobbleStart + _WobbleDuration, _WobbleStart, _Time.y), 0);
 
 			modifiedPos.xyz += (sin((data.vertex.x + _Time * _AnimationSpeed) * _Frequency) + cos((data.vertex.z + _Time.y * _AnimationSpeed) * _Frequency)) * (_Amplitude * ramp);
 
