@@ -25,17 +25,18 @@ public class SplatParticle : MonoBehaviour
         public void UpdateSplash(bool _Fade)
         {
             LifeTimer -= Time.deltaTime;
-            if(_Fade)CurrentMaterial.material.color = new Color(CurrentMaterial.material.color.r, CurrentMaterial.material.color.g, CurrentMaterial.material.color.b, Mathf.Clamp(LifeTimer,0,1));
+            if (_Fade) CurrentMaterial.material.color = new Color(CurrentMaterial.material.color.r, CurrentMaterial.material.color.g, CurrentMaterial.material.color.b, Mathf.Clamp(LifeTimer, 0, 1));
         }
         public void DeAllocate(List<SplashTracker> _Recycle)
         {
             _Recycle.Add(this);
-            CurrentObject.SetActive(false);            
+            CurrentObject.SetActive(false);
         }
     }
 
     //Object to be placed into scene to show where splash had landed
     public GameObject SplashObjectPrefab;
+    //The holder of all the splashes
     public GameObject GooHolder;
     //Life time for the splashes
     public float SplashLifeTime;
@@ -54,30 +55,25 @@ public class SplatParticle : MonoBehaviour
 
     //Current Particle System
     ParticleSystem Particle;
-    //Current list of Collision events from Particle system
-    //List<ParticleCollisionEvent> CollisionEvents = new List<ParticleCollisionEvent>();
+    //Current list of Particles that have entered the trigger with the ground
     List<ParticleSystem.Particle> ParticlesHaveEntered = new List<ParticleSystem.Particle>();
-    //Normal Particles
-    //ParticleSystem OtherParticles;
-    
+
 
     void Start()
     {
         //Set the Current gameobjects particlesystem
         Particle = GetComponent<ParticleSystem>();
-        //Set the OtherParticles to the Normal Particle System
-        //OtherParticles = transform.parent.GetChild(0).GetComponent<ParticleSystem>();
     }
 
     void Update()
     {
         //Itterate through each splash
-        for(int i = 0; i < Splashes.Count; i++)
+        for (int i = 0; i < Splashes.Count; i++)
         {
             //Update each splash
             Splashes[i].UpdateSplash(FadeSplash);
             //If the splash is out of time
-            if(Splashes[i].LifeTimer <= 0)
+            if (Splashes[i].LifeTimer <= 0)
             {
                 Splashes[i].DeAllocate(RecycledSplashes);
                 //Remove the splash
@@ -132,43 +128,29 @@ public class SplatParticle : MonoBehaviour
         //Changes the position of where the particles should spawn
         transform.parent.position = _Position;
 
+        //I know this is obsolete, Don't worry about it
         //Set the start color of the Paricles
 #pragma warning disable 0618
-        Particle.startColor = Particle.startColor = _Color;
+        Particle.startColor = _Color;
 #pragma warning restore 0618
+
         //Emit both particle effects (Normal Particles and Collision particle)
         //Using Emit, as I want Particles to spawn RIGHT NOW rather than when Play wants them to
-        Particle.Emit(1);
-
         Particle.Emit(AmountOfGoo);
 
         //Sets the velocity of the particles
-        SetParticleVelocity(_Velocity, Particle, true);
-        SetParticleVelocity(_Velocity, Particle, false);
+        SetParticleVelocity(_Velocity, Particle);
     }
 
-    void SetParticleVelocity(Vector3 _Velocity, ParticleSystem _ParticleSystem, bool _CollisionParticle)
+    void SetParticleVelocity(Vector3 _Velocity, ParticleSystem _ParticleSystem)
     {
         //Create new array of particles the size of the old array
         ParticleSystem.Particle[] Particles = new ParticleSystem.Particle[_ParticleSystem.particleCount];
         //Set the new array equal to the new array
         _ParticleSystem.GetParticles(Particles);
 
-        if (_CollisionParticle)
-        {
-            //Set Last Added Particle to correct velocity
-            Particles[Particles.Length - 1].velocity = _Velocity;
-        }
-        else
-        {
-            //Set Last AmountOfGoo particles to the correct Velocity
-            //Move through the new array
-            for (int i = Particles.Length - 1; i > (Particles.Length - AmountOfGoo) - 1; i--)
-            {
-                //Set each Particles velocity to the Desired Velocity
-                Particles[i].velocity = _Velocity;
-            }
-        }
+        //Set Last Added Particle to correct velocity
+        Particles[Particles.Length - 1].velocity = _Velocity;
 
         //Set the old particle array to the new one
         _ParticleSystem.SetParticles(Particles);
