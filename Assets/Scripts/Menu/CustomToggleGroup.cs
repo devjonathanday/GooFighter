@@ -16,6 +16,8 @@ public class CustomToggleGroup : MonoBehaviour
 
     public SelectableToggle currentSelected;
     public TextMeshProUGUI readyText;
+    public GameObject readyStatus;
+    public GameObject cancelStatus;
     public GameManager GM;
 
     public GameObject buttonOrganizer;
@@ -63,21 +65,22 @@ public class CustomToggleGroup : MonoBehaviour
             if (!otherToggleGroup.ready || currentSelected.colorID != otherToggleGroup.currentSelected.colorID)
             {
                 ready = true;
-                readyText.text = "READY!";
-                readyText.color = Color.green;
+                readyStatus.SetActive(false);
+                cancelStatus.SetActive(true);
+                readyText.text = string.Empty;
                 buttonOrganizer.SetActive(false);
             }
             else
             {
                 readyText.text = "ALREADY TAKEN!";
-                readyText.color = Color.red;
             }
         }
         if (Input.GetButtonDown(cancelButton))
         {
             ready = false;
-            readyText.text = "DECIDING...";
-            readyText.color = Color.red;
+            readyStatus.SetActive(true);
+            cancelStatus.SetActive(false);
+            readyText.text = string.Empty;
             buttonOrganizer.SetActive(true);
         }
     }
