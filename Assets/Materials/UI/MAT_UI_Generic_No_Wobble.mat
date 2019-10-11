@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_UI_Generic
+  m_Name: MAT_UI_Generic_No_Wobble
   m_Shader: {fileID: 4800000, guid: 4fbc0413bb5d67945a24b190dd3f09b2, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
