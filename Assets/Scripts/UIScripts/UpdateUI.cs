@@ -87,7 +87,8 @@ public class UpdateUI : MonoBehaviour
         //If no game manager, create another
         if (Manager == null) Manager = GameManager.CreateMissingManager().GetComponent<GameManager>();
 
-        DisplayRoundNumber();
+        //DisplayRoundNumber();
+        Manager.HasCheckedRoundNumber = false;
     }
 
     void Update()
@@ -119,9 +120,10 @@ public class UpdateUI : MonoBehaviour
         //Set the current round number to appear
         //If the round is greator than the max rounds, the display is the max rounds
         var currentNumber = NumberObjects[(Manager.GetRound() < NumberObjects.Length) ? Manager.GetRound() : NumberObjects.Length - 1];
-        var numRenderer = currentNumber.GetComponent<Renderer>();
-        numRenderer.material.SetFloat("_WobbleStart", Time.time);
+        var numJelly = currentNumber.GetComponent<Jellyfier>();
         currentNumber.SetActive(true);
+        numJelly.ApplyPressureToRandomPoint(numJelly.fallForce);
+        //numRenderer.material.SetFloat("_WobbleStart", Time.time);
     }
     void DisplayTimer()
     {
@@ -174,12 +176,14 @@ public class UpdateUI : MonoBehaviour
         //Set the correct one to true
         var p1Score = PlayerOneScoreObjects[(Manager.GetPlayerScore(1) < PlayerOneScoreObjects.Length) ? Manager.GetPlayerScore(1) : PlayerOneScoreObjects.Length - 1];
         var p2Score = PlayerTwoScoreObjects[(Manager.GetPlayerScore(2) < PlayerTwoScoreObjects.Length) ? Manager.GetPlayerScore(2) : PlayerTwoScoreObjects.Length - 1];
-        var p1Renderer = p1Score.GetComponent<Renderer>();
-        var p2Renderer = p2Score.GetComponent<Renderer>();
+        var p1Jelly = p1Score.GetComponent<Jellyfier>();
+        var p2Jelly = p2Score.GetComponent<Jellyfier>();
 
         p1Score.SetActive(true);
-        p1Renderer.material.SetFloat("WobbleStart", Time.time);
+        //p1Jelly.ApplyPressureToRandomPoint(p1Jelly.fallForce);
+        //p1Jelly.material.SetFloat("WobbleStart", Time.time);
         p2Score.SetActive(true);
-        p2Renderer.material.SetFloat("WobbleStart", Time.time);
+        //p2Jelly.ApplyPressureToRandomPoint(p2Jelly.fallForce);
+        //p2Jelly.material.SetFloat("WobbleStart", Time.time);
     }
 }

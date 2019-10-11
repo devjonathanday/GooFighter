@@ -63,20 +63,20 @@ public class CustomToggleGroup : MonoBehaviour
             if (!otherToggleGroup.ready || currentSelected.colorID != otherToggleGroup.currentSelected.colorID)
             {
                 ready = true;
-                readyText.text = "Ready!";
+                readyText.text = "READY!";
                 readyText.color = Color.green;
                 buttonOrganizer.SetActive(false);
             }
             else
             {
-                readyText.text = "Already taken!";
+                readyText.text = "ALREADY TAKEN!";
                 readyText.color = Color.red;
             }
         }
         if (Input.GetButtonDown(cancelButton))
         {
             ready = false;
-            readyText.text = "Deciding...";
+            readyText.text = "DECIDING...";
             readyText.color = Color.red;
             buttonOrganizer.SetActive(true);
         }

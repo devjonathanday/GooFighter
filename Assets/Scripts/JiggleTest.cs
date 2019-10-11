@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class JiggleTest : MonoBehaviour
 {
-    Renderer r;
+    Jellyfier r;
     // Start is called before the first frame update
     void Start()
     {
-        r = GetComponent<Renderer>();
+        r = GetComponent<Jellyfier>();
     }
 
     // Update is called once per frame
@@ -17,7 +17,7 @@ public class JiggleTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("do jiggle");
-            r.material.SetFloat("_WobbleStart", Time.time);
+            r.ApplyPressureToRandomPoint(r.fallForce);
         }
     }
 }

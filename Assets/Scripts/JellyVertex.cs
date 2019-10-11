@@ -38,6 +38,6 @@ public class JellyVertex
         Vector3 distanceVertexPoint = currentVertexPosition - _transform.InverseTransformPoint(_position);
         float adaptedPressure = _pressure / (1f + distanceVertexPoint.sqrMagnitude);
         float velocity = adaptedPressure * Time.deltaTime;
-        currentVelocity += distanceVertexPoint.normalized * velocity;
+        currentVelocity += Vector3.Scale(distanceVertexPoint.normalized, distanceVertexPoint.normalized) * velocity;
     }
 }
