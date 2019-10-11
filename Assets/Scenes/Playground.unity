@@ -2579,6 +2579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d55c5215c2e8d34887d20a816b02db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentMap: 0
   CurrentState: 2
   HasCheckedRoundNumber: 0
   Player1ColorID: 1
@@ -2590,7 +2591,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8eb82cb9e8c5c004ba21925f835cd04f, type: 2}
   - {fileID: 2100000, guid: e3a019a824f90ce448101bdbe328ec30, type: 2}
   - {fileID: 2100000, guid: fcf86dcafd59fdb4fa029e39b0331bc0, type: 2}
-  roundsSceneName: 
+  roundsSceneName: Rounds
 --- !u!4 &2043268056
 Transform:
   m_ObjectHideFlags: 0

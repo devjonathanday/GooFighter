@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Forrest_Test.unity
     guid: 2050ce5af8d38aa459198e8d6b608cef
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: ae64f5cb2f94abf448b6537110a0787d
   m_configObjects: {}

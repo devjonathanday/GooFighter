@@ -122,7 +122,7 @@ public class UpdateUI : MonoBehaviour
         var currentNumber = NumberObjects[(Manager.GetRound() < NumberObjects.Length) ? Manager.GetRound() : NumberObjects.Length - 1];
         var numJelly = currentNumber.GetComponent<Jellyfier>();
         currentNumber.SetActive(true);
-        numJelly.ApplyPressureToRandomPoint(numJelly.fallForce);
+        //numJelly.ApplyPressureToRandomPoint(numJelly.fallForce);
         //numRenderer.material.SetFloat("_WobbleStart", Time.time);
     }
     void DisplayTimer()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GAMESTATE { MainMenu, ColorSelect, Rounds, EndOfRound, TransitionRound}
+public enum GAMESTATE { MainMenu, ColorSelect, Rounds, EndOfRound, TransitionRound, WinScreen}
 public enum MAPS { Playground, PoolTable}
 
 public class GameManager : MonoBehaviour
@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool HasCheckedRoundNumber = false;//Checks to see if the 
 
-    int Player1Score = 0;//Score For Player One
-    int Player2Score = 0;//Score For Player Two
-    
+    public int Player1Score = 0;//Score For Player One
+    public int Player2Score = 0;//Score For Player Two
+
     public int Player1ColorID = 0;
     public int Player2ColorID = 0;
 
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public string roundsSceneName;
 
     public int? LastWinner = null;
-    
+
     //0 = Red
     //1 = Yellow
     //2 = Green
@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     float MaxRoundTimer = 180.0f;//Reset time for the Timer
     float RoundTimer;//Round timer
-
 
     void Start()
     {
@@ -107,12 +106,22 @@ public class GameManager : MonoBehaviour
         //If the Current state is the end of round
         if (CurrentState == GAMESTATE.TransitionRound)
         {
+            CheckForWinner();
             //NextRound
             NextRound();
             //Reset the current round for the next play
+
             ResetingRound();
+
+            CheckForWinner();
             //Resets the state to be the rounds
             CurrentState = GAMESTATE.Rounds;
+        }
+
+        if (CurrentState == GAMESTATE.WinScreen)
+        {
+            SceneManager.LoadScene("WinScreen");
+            return;
         }
     }
     public void SetGameState(GAMESTATE _NewState, int _PlayerNumber)
@@ -179,19 +188,19 @@ public class GameManager : MonoBehaviour
     {
         //Return Correct player score
         //If player does not exist, return 0
-        return (_PlayerNumber == 1) ? Player1Score : 
-               (_PlayerNumber == 2) ? Player2Score : 
+        return (_PlayerNumber == 1) ? Player1Score :
+               (_PlayerNumber == 2) ? Player2Score :
                0;
     }
 
     void CHEAT()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             SetGameState(GAMESTATE.EndOfRound, 1);//Player one wins
             RoundWaitingPeriod();
         }
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             SetGameState(GAMESTATE.EndOfRound, 2);//Player two wins
             RoundWaitingPeriod();
@@ -227,5 +236,21 @@ public class GameManager : MonoBehaviour
     {
         //Gets the name out of the enum
         return System.Enum.GetName(typeof(MAPS), CurrentMap).ToString();
+    }
+
+    public void CheckForWinner()
+    {
+        if (Player1Score >= 2 || Player2Score >= 2)
+        {
+            SetGameState(GAMESTATE.WinScreen);
+
+        }
+    }
+
+    public void ResetFromWinScreen()
+    {
+        Player1Score = 0;
+        Player2Score = 0;
+        SceneManager.LoadScene("CharacterSelection");
     }
 }
