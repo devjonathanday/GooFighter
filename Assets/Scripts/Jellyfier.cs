@@ -88,8 +88,8 @@ public class Jellyfier : MonoBehaviour
     }
     public void ApplyPressureToRandomPoint(float _pressure)
     {
-        Debug.Log("trying random jiggle");
         Vector3 randPoint = jellyVerts[Random.Range(0, jellyVerts.Length - 1)].currentVertexPosition;
+        Debug.Log("trying random jiggle " + randPoint);
         for (int i = 0; i < jellyVerts.Length; i++)
         {
             jellyVerts[i].ApplyPressureToVertex(transform, randPoint, _pressure);
