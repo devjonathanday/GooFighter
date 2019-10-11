@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public enum GAMESTATE { MainMenu, ColorSelect, Rounds, EndOfRound, TransitionRound}
+public enum MAPS { Playground, PoolTable}
 
 public class GameManager : MonoBehaviour
 {
     static GameManager Manager;//Singletoness
 
+    public MAPS CurrentMap;//Current map to be loaded
+
+    //[HideInInspector]
     public GAMESTATE CurrentState;//Current state of the game
     int Round = 0;//Which round is current
+    [HideInInspector]
     public bool HasCheckedRoundNumber = false;//Checks to see if the 
 
     int Player1Score = 0;//Score For Player One
@@ -216,5 +221,11 @@ public class GameManager : MonoBehaviour
     {
         if (playerID == 1) Player1ColorID = colorID;
         if (playerID == 2) Player2ColorID = colorID;
+    }
+
+    public string GetCurrentMapName()
+    {
+        //Gets the name out of the enum
+        return System.Enum.GetName(typeof(MAPS), CurrentMap).ToString();
     }
 }
