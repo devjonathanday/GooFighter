@@ -726,7 +726,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8eb82cb9e8c5c004ba21925f835cd04f, type: 2}
   - {fileID: 2100000, guid: e3a019a824f90ce448101bdbe328ec30, type: 2}
   - {fileID: 2100000, guid: fcf86dcafd59fdb4fa029e39b0331bc0, type: 2}
-  roundsSceneName: Playground
 --- !u!4 &65471051
 Transform:
   m_ObjectHideFlags: 0
@@ -3033,8 +3032,11 @@ MonoBehaviour:
   SpeedOfAnimation: 0.2
   InputDelay: 0.1
   HorizontalAxis: P1Horizontal
+  HorizontalAxis2: P2Horizontal
   Submit: P1MenuConfirm
+  Submit2: P2MenuConfirm
   Cancel: P1MenuCancel
+  Cancel2: P2MenuCancel
   Levels:
   - Level: {fileID: 1857935222}
     Camera: {fileID: 1004172521}
