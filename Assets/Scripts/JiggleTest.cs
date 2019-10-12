@@ -16,7 +16,6 @@ public class JiggleTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("do jiggle");
             r.ApplyPressureToRandomPoint(r.fallForce);
         }
     }

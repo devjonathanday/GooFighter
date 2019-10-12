@@ -13,7 +13,7 @@ public class Jellyfier : MonoBehaviour
     private Mesh mesh;
 
     JellyVertex[] jellyVerts;
-    Vector3[] currentMeshvertices;
+    Vector3[] currentMeshVerts;
 
     // Use this for initialization
     void Awake()
@@ -38,10 +38,10 @@ public class Jellyfier : MonoBehaviour
             jellyVerts[i].Settle(stiffness);
 
             jellyVerts[i].currentVertexPosition += jellyVerts[i].currentVelocity * Time.deltaTime;
-            currentMeshvertices[i] = jellyVerts[i].currentVertexPosition;
+            currentMeshVerts[i] = jellyVerts[i].currentVertexPosition;
         }
 
-        mesh.vertices = currentMeshvertices;
+        mesh.vertices = currentMeshVerts;
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
         mesh.RecalculateTangents();
@@ -50,11 +50,11 @@ public class Jellyfier : MonoBehaviour
     private void GetVertices()
     {
         jellyVerts = new JellyVertex[mesh.vertices.Length];
-        currentMeshvertices = new Vector3[mesh.vertices.Length];
+        currentMeshVerts = new Vector3[mesh.vertices.Length];
         for (int i = 0; i < mesh.vertices.Length; i++)
         {
             jellyVerts[i] = new JellyVertex(i, mesh.vertices[i], mesh.vertices[i], Vector3.zero);
-            currentMeshvertices[i] = mesh.vertices[i];
+            currentMeshVerts[i] = mesh.vertices[i];
         }
     }
 
@@ -63,7 +63,6 @@ public class Jellyfier : MonoBehaviour
         ContactPoint[] collisionPoints = collision.contacts;
         for (int i = 0; i < collisionPoints.Length; i++)
         {
-            Debug.Log("collide");
             Vector3 inputPoint = collisionPoints[i].point + (collisionPoints[i].point * 0.1f);
             ApplyPressureToPoint(inputPoint, fallForce);
         }
@@ -80,7 +79,6 @@ public class Jellyfier : MonoBehaviour
     }
     public void ApplyPressureToPoint(Vector3 _point, float _pressure)
     {
-        Debug.Log("trying jiggle");
         for (int i = 0; i < jellyVerts.Length; i++)
         {
             jellyVerts[i].ApplyPressureToVertex(transform, _point, _pressure);
@@ -89,7 +87,6 @@ public class Jellyfier : MonoBehaviour
     public void ApplyPressureToRandomPoint(float _pressure)
     {
         Vector3 randPoint = jellyVerts[Random.Range(0, jellyVerts.Length - 1)].currentVertexPosition;
-        Debug.Log("trying random jiggle " + randPoint);
         for (int i = 0; i < jellyVerts.Length; i++)
         {
             jellyVerts[i].ApplyPressureToVertex(transform, randPoint, _pressure);
