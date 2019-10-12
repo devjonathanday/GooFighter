@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public enum GAMESTATE { MainMenu, ColorSelect, Rounds, EndOfRound, TransitionRound, WinScreen}
-public enum MAPS { Playground, PoolTable}
+public enum MAPS { Playground, PoolTable, Ring}
 
 public class GameManager : MonoBehaviour
 {
@@ -25,8 +25,6 @@ public class GameManager : MonoBehaviour
     public int Player2ColorID = 0;
 
     public Material[] playerColors;
-
-    public string roundsSceneName;
 
     public int? LastWinner = null;
 
@@ -100,7 +98,7 @@ public class GameManager : MonoBehaviour
         if (CurrentState == GAMESTATE.Rounds)
         {
             //Go to Rounds
-            SceneManager.LoadScene(roundsSceneName);
+            SceneManager.LoadScene(CurrentMap.ToString());
         }
 
         //If the Current state is the end of round
@@ -251,6 +249,6 @@ public class GameManager : MonoBehaviour
     {
         Player1Score = 0;
         Player2Score = 0;
-        SceneManager.LoadScene("CharacterSelection");
+        SceneManager.LoadScene("MapSelection");
     }
 }

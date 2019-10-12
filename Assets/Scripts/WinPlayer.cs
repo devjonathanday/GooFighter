@@ -64,7 +64,7 @@ public class WinPlayer : MonoBehaviour
             readySymbol.SetActive(false);
             ready = true;
         }
-        if (losingPlayer.ready && ready) GM.ResetFromWinScreen();
+        if ((winner) && losingPlayer.ready && ready) GM.ResetFromWinScreen();
     }
 
     public void ChangeColor(int ID)
