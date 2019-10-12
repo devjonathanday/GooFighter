@@ -48,8 +48,9 @@ public class MapSelection : MonoBehaviour
 
     [Header("Controls")]
     public string HorizontalAxis;
-    public string Submit;
-    public string Cancel;
+    public string HorizontalAxis2;
+    public string Submit, Submit2;
+    public string Cancel, Cancel2;
 
     [Header("Level Objects")]
     public List<LevelController> Levels = new List<LevelController>();
@@ -89,7 +90,7 @@ public class MapSelection : MonoBehaviour
         //CHeck to see if enough time has been inbetween inputs
         if (Time.time - LastInput > InputDelay)
         {
-            float Horizontal = GetAxis(HorizontalAxis);
+            float Horizontal = (GetAxis(HorizontalAxis) != 0)?GetAxis(HorizontalAxis):GetAxis(HorizontalAxis2);
             if (Horizontal < 0)
             {
                 Index--;
@@ -147,11 +148,11 @@ public class MapSelection : MonoBehaviour
 
     void ButtonUpdate()
     {
-        if(GetButtonDown(Cancel))
+        if(GetButtonDown(Cancel) || GetButtonDown(Cancel2))
         {
             SceneManager.LoadScene(PreviousScene);
         }
-        if (GetButtonDown(Submit))
+        if (GetButtonDown(Submit) || GetButtonDown(Cancel2))
         {
             Manager.CurrentMap = (MAPS)System.Enum.Parse(typeof(MAPS), Levels[Index].Level.name);
             SceneManager.LoadScene(NextScene);
