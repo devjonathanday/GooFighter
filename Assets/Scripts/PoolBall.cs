@@ -5,7 +5,7 @@ using UnityEngine;
 public class PoolBall : MonoBehaviour
 {
     public enum BALLTYPE { Solid, Stripes }
-    public enum BALLCOLOR { Red,Blue,Green}
+    public enum BALLCOLOR { Red,Blue,Green, Yellow, Black, White}
 
     public BALLTYPE BallType;
     public BALLCOLOR BallColor;
@@ -27,9 +27,19 @@ public class PoolBall : MonoBehaviour
             case BALLCOLOR.Green:
                 MyRend.materials[0].color = Color.green;
                 break;
+            case BALLCOLOR.Yellow:
+                MyRend.materials[0].color = Color.yellow;
+                break;
+            case BALLCOLOR.Black:
+                MyRend.materials[0].color = Color.black;
+                break;
+            case BALLCOLOR.White:
+                MyRend.materials[0].color = Color.white;
+                break;
             default:
                 break;
         }
-        if (BallType == BALLTYPE.Solid) MyRend.materials[0].SetTexture("_MainTex", null);
+        if (BallType == BALLTYPE.Solid) Destroy(MyRend.materials[2]);
+        else Destroy(MyRend.materials[1]);
     }
 }
