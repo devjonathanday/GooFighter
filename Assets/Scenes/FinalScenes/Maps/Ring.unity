@@ -1406,8 +1406,8 @@ MonoBehaviour:
   HasCheckedRoundNumber: 0
   Player1Score: 0
   Player2Score: 0
-  Player1ColorID: 1
-  Player2ColorID: 4
+  Player1ColorID: 3
+  Player2ColorID: 5
   playerColors:
   - {fileID: 2100000, guid: 67010a1e36443b24d8c63e09b4a99932, type: 2}
   - {fileID: 2100000, guid: 56bd92880b8495941badaebb4cfc8938, type: 2}
