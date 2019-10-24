@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CustomToggleGroup : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class CustomToggleGroup : MonoBehaviour
     public CustomToggleGroup otherToggleGroup;
 
     public bool ready;
+
+    [Header("Scene Management")]
+    public string PreviousScene;
 
     private void Awake()
     {
@@ -77,11 +81,18 @@ public class CustomToggleGroup : MonoBehaviour
         }
         if (Input.GetButtonDown(cancelButton))
         {
-            ready = false;
-            readyStatus.SetActive(true);
-            cancelStatus.SetActive(false);
-            readyText.text = string.Empty;
-            buttonOrganizer.SetActive(true);
+            if (ready)
+            {
+                ready = false;
+                readyStatus.SetActive(true);
+                cancelStatus.SetActive(false);
+                readyText.text = string.Empty;
+                buttonOrganizer.SetActive(true);
+            }
+            else
+            {
+                SceneManager.LoadScene(PreviousScene);
+            }
         }
     }
 }

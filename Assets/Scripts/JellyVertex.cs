@@ -25,7 +25,7 @@ public class JellyVertex
 
     public void UpdateVelocity(float _bounceSpeed)
     {
-        currentVelocity = currentVelocity - GetCurrentDisplacement() * _bounceSpeed * Time.deltaTime;
+        currentVelocity -= GetCurrentDisplacement() * _bounceSpeed * Time.deltaTime;
     }
 
     public void Settle(float _stiffness)
@@ -35,9 +35,9 @@ public class JellyVertex
 
     public void ApplyPressureToVertex(Transform _transform, Vector3 _position, float _pressure)
     {
-        Vector3 distanceVertexPoint = currentVertexPosition - _transform.InverseTransformPoint(_position);
+        Vector3 distanceVertexPoint = currentVertexPosition - _position;
         float adaptedPressure = _pressure / (1f + distanceVertexPoint.sqrMagnitude);
         float velocity = adaptedPressure * Time.deltaTime;
-        currentVelocity += Vector3.Scale(distanceVertexPoint.normalized, distanceVertexPoint.normalized) * velocity;
+        currentVelocity += distanceVertexPoint.normalized * velocity;
     }
 }
