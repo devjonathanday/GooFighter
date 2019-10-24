@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
     static GameManager Manager;//Singletoness
 
+    public List<Jellyfier> jellyObjects;
+
     public MAPS CurrentMap;//Current map to be loaded
 
     //[HideInInspector]
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
     //3 = Blue
     //4 = Pink
     //5 = Black
+
 
     float MaxRoundTimer = 180.0f;//Reset time for the Timer
     float RoundTimer;//Round timer
@@ -134,6 +137,8 @@ public class GameManager : MonoBehaviour
             IncreasePlayerScore(_PlayerNumber);
             //Set Round ending timer
             RoundWaitingPeriod();
+            //Clear jelly list
+            jellyObjects.Clear();
         }
     }
     public GAMESTATE GetState()
@@ -250,5 +255,14 @@ public class GameManager : MonoBehaviour
         Player1Score = 0;
         Player2Score = 0;
         SceneManager.LoadScene("MapSelection");
+    }
+
+    public void JiggleEverything()
+    {
+        for (int i = 0; i < jellyObjects.Count; i++)
+        {
+            if (jellyObjects[i] != null && jellyObjects[i].gameObject.activeSelf)
+                jellyObjects[i].Jiggle();
+        }
     }
 }

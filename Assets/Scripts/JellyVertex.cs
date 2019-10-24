@@ -33,10 +33,10 @@ public class JellyVertex
         currentVelocity *= 1f - _stiffness * Time.deltaTime;
     }
 
-    public void ApplyPressureToVertex(Transform _transform, Vector3 _position, float _pressure)
+    public void ApplyPressureToVertex(Transform _transform, Vector3 _position, float _pressure, float _roundness)
     {
         Vector3 distanceVertexPoint = currentVertexPosition - _position;
-        float adaptedPressure = _pressure / (1f + (distanceVertexPoint.sqrMagnitude / 10));
+        float adaptedPressure = _pressure / (1f + (distanceVertexPoint.sqrMagnitude / _roundness));
         float velocity = adaptedPressure * Time.deltaTime;
         currentVelocity += distanceVertexPoint.normalized * velocity;
     }
