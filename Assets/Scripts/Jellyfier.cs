@@ -10,6 +10,7 @@ public class Jellyfier : MonoBehaviour
     public float stiffness;
     public float roundness;
     public float falloffMultiplier;
+    public bool controllable = true;
 
     private MeshFilter meshFilter;
     private Mesh mesh;
@@ -28,7 +29,8 @@ public class Jellyfier : MonoBehaviour
         GetVertices();
 
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        gm.jellyObjects.Add(this);
+        if (controllable)
+            gm.jellyObjects.Add(this);
     }
 
     // Update is called once per frame
