@@ -102,6 +102,7 @@ public class Punch : MonoBehaviour
                                 //Particle Effect
                                 PController.SplatParticleController.DisplayHitParticle(HighestVelVecFromContacts(Contact) / 2, Manager.playerColors[Manager.Player2ColorID].color, Contact[0].point);
                             }
+                        Manager.JiggleEverything();
                     }
                 }
 

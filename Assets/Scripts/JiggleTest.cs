@@ -23,8 +23,8 @@ public class JiggleTest : MonoBehaviour
 
     private IEnumerator JiggleTwice()
     {
-        r.ApplyPressureToRandomPoint(r.fallForce);
+        r.ApplyPressureToRandomPoint(r.fallForce, r.roundness);
         yield return wait;
-        r.ApplyPressureToRandomPoint(r.fallForce);
+        r.ApplyPressureToRandomPoint(r.fallForce, r.roundness);
     }
 }

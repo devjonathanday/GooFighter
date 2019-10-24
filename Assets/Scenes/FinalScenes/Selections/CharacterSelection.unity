@@ -3020,8 +3020,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d55c5215c2e8d34887d20a816b02db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jellyObjects: []
   CurrentMap: 0
-  CurrentState: 0
+  CurrentState: 1
   HasCheckedRoundNumber: 0
   Player1Score: 0
   Player2Score: 0
