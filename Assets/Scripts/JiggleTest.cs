@@ -5,6 +5,7 @@ using UnityEngine;
 public class JiggleTest : MonoBehaviour
 {
     Jellyfier r;
+    WaitForSeconds wait = new WaitForSeconds(0.1f);
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,14 @@ public class JiggleTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            r.ApplyPressureToRandomPoint(r.fallForce);
+            StartCoroutine(JiggleTwice());
         }
+    }
+
+    private IEnumerator JiggleTwice()
+    {
+        r.ApplyPressureToRandomPoint(r.fallForce);
+        yield return wait;
+        r.ApplyPressureToRandomPoint(r.fallForce);
     }
 }

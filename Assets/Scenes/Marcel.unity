@@ -4907,7 +4907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceSpeed: 500
-  fallForce: 5000
+  fallForce: 1500
   stiffness: 5
 --- !u!1 &132901598 stripped
 GameObject:
@@ -9914,6 +9914,39 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 1926413254}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &650257689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3790777012172833353, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+    type: 3}
+  m_PrefabInstance: {fileID: 1926413254}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &650257693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650257689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3723eb0db8470324e92f2c16702539e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &650257694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650257689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a1d2524d7942346aab3b51a7bdc056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceSpeed: 500
+  fallForce: 1500
+  stiffness: 5
 --- !u!1 &657738561 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8936709078281249023, guid: d5b87fb12bdbce24f9148597d0e0ee82,
@@ -9933,7 +9966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceSpeed: 500
-  fallForce: 5000
+  fallForce: 1500
   stiffness: 5
 --- !u!1 &677154920 stripped
 GameObject:
@@ -9954,7 +9987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceSpeed: 500
-  fallForce: 5000
+  fallForce: 1500
   stiffness: 5
 --- !u!1 &775097359 stripped
 GameObject:
@@ -9975,8 +10008,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceSpeed: 500
-  fallForce: 5000
+  fallForce: 1500
   stiffness: 5
+--- !u!114 &775097363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775097359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3723eb0db8470324e92f2c16702539e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &785424412
 GameObject:
   m_ObjectHideFlags: 0
@@ -10091,6 +10136,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1926413254}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &845713555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845713554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a1d2524d7942346aab3b51a7bdc056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceSpeed: 500
+  fallForce: 1500
+  stiffness: 5
 --- !u!114 &845713557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10353,7 +10413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceSpeed: 500
-  fallForce: 5000
+  fallForce: 1500
   stiffness: 5
 --- !u!1 &979320641 stripped
 GameObject:
@@ -10386,8 +10446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceSpeed: 500
-  fallForce: 100000
-  stiffness: 1
+  fallForce: 1500
+  stiffness: 5
 --- !u!1 &1071835365
 GameObject:
   m_ObjectHideFlags: 0
@@ -10439,8 +10499,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceSpeed: 500
-  fallForce: 5000
+  fallForce: 1500
   stiffness: 5
+--- !u!114 &1141268972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141268968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3723eb0db8470324e92f2c16702539e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1159368316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10964,7 +11036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceSpeed: 500
-  fallForce: 5000
+  fallForce: 1500
   stiffness: 5
 --- !u!1 &1637217225 stripped
 GameObject:
@@ -11003,7 +11075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceSpeed: 500
-  fallForce: 5000
+  fallForce: 1500
   stiffness: 5
 --- !u!23 &1663911325 stripped
 MeshRenderer:
@@ -11023,6 +11095,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1926413254}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1854420237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854420236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a1d2524d7942346aab3b51a7bdc056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceSpeed: 500
+  fallForce: 1500
+  stiffness: 5
 --- !u!114 &1854420239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11509,12 +11596,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d55c5215c2e8d34887d20a816b02db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentMap: 0
   CurrentState: 1
   HasCheckedRoundNumber: 0
+  Player1Score: 0
+  Player2Score: 0
   Player1ColorID: 1
   Player2ColorID: 4
   playerColors: []
-  roundsSceneName: 
 --- !u!4 &2043268056
 Transform:
   m_ObjectHideFlags: 0
