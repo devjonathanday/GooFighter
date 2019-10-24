@@ -2332,11 +2332,48 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8159761466489222006, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+    - target: {fileID: 5379307513936420476, guid: d5b87fb12bdbce24f9148597d0e0ee82,
         type: 3}
-      propertyPath: PController
+      propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 1459984216}
+      objectReference: {fileID: 11400000, guid: 9f9b4d5f99fbb5640ad76c851f31893f,
+        type: 2}
+    - target: {fileID: 5379307513936420476, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 21969438971637424, guid: 9f9b4d5f99fbb5640ad76c851f31893f,
+        type: 2}
+    - target: {fileID: 5379307513936420476, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379307513936420476, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379307513936420476, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379307513936420476, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790777012172414569, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 379
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359849490305777467, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 355
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b87fb12bdbce24f9148597d0e0ee82, type: 3}
 --- !u!23 &1926413255 stripped
@@ -2476,6 +2513,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8eb82cb9e8c5c004ba21925f835cd04f, type: 2}
   - {fileID: 2100000, guid: e3a019a824f90ce448101bdbe328ec30, type: 2}
   - {fileID: 2100000, guid: fcf86dcafd59fdb4fa029e39b0331bc0, type: 2}
+  joystick: 0
 --- !u!4 &2043268056
 Transform:
   m_ObjectHideFlags: 0
@@ -2519,6 +2557,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 559371883293521450, guid: 260669b5aecb5fe41a06291c578af961,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 559371884842084380, guid: 260669b5aecb5fe41a06291c578af961,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 559371884005166236, guid: 260669b5aecb5fe41a06291c578af961,
         type: 3}
@@ -2654,16 +2702,6 @@ PrefabInstance:
         type: 3}
       propertyPath: inputAxes.Array.data[1]
       value: P1Vertical
-      objectReference: {fileID: 0}
-    - target: {fileID: 559371883293521450, guid: 260669b5aecb5fe41a06291c578af961,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 559371884842084380, guid: 260669b5aecb5fe41a06291c578af961,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 559371883443933082, guid: 260669b5aecb5fe41a06291c578af961,
         type: 3}

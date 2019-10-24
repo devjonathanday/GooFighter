@@ -30,13 +30,14 @@ public class GameManager : MonoBehaviour
 
     public int? LastWinner = null;
 
+    public bool joystick;
+
     //0 = Red
     //1 = Yellow
     //2 = Green
     //3 = Blue
     //4 = Pink
     //5 = Black
-
 
     float MaxRoundTimer = 180.0f;//Reset time for the Timer
     float RoundTimer;//Round timer
