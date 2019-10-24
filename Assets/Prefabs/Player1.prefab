@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 6970096431788577155, guid: b5b5c1ddf60536342880e07c65793e82,
+        type: 3}
+      propertyPath: m_AngularXMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6970096433408348811, guid: b5b5c1ddf60536342880e07c65793e82,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,6 +71,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970096433198777366, guid: b5b5c1ddf60536342880e07c65793e82,
+        type: 3}
+      propertyPath: m_AngularXMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6970096432608034588, guid: b5b5c1ddf60536342880e07c65793e82,
         type: 3}
