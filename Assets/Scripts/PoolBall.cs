@@ -30,6 +30,6 @@ public class PoolBall : MonoBehaviour
             default:
                 break;
         }
-        
+        if (BallType == BALLTYPE.Solid) MyRend.materials[0].SetTexture("_MainTex", null);
     }
 }
