@@ -41,6 +41,7 @@ public class Player
     public float MoveSpeed;
     public float RotSpeed;
     public float GroundCheckDistance;
+    public AudioSource walkSplats;
 
     [Header("Bones")]
     public GameObject Head;
@@ -122,7 +123,9 @@ public class Player
         if (input.sqrMagnitude != 0)
         {
             CenterRB.AddForceAtPosition((positionToInput - forwardPos) * RotSpeed, forwardPos, ForceMode.Impulse);
+            walkSplats.volume = Mathf.Lerp(walkSplats.volume, 0.1f, 0.1f);
         }
+        else walkSplats.volume = Mathf.Lerp(walkSplats.volume, 0, 0.1f);
 
         Move(input * MoveSpeed);
     }

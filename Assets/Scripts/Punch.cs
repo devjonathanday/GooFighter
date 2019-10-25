@@ -20,6 +20,9 @@ public class Punch : MonoBehaviour
 
     public float launchSpeed;
 
+    public AudioSource punchAudio;
+    public AudioClip[] punchSounds;
+    
     void Start()
     {
         RB = GetComponent<Rigidbody>();
@@ -93,6 +96,9 @@ public class Punch : MonoBehaviour
                                 PController.PlayerOne.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
                                 //Particle Effect
                                 PController.SplatParticleController.DisplayHitParticle(HighestVelVecFromContacts(Contact) / 2, Manager.playerColors[Manager.Player1ColorID].color, Contact[0].point);
+                                //Play random sound from array
+                                AudioController.PlayRandomSound(punchAudio, punchSounds);
+                                punchAudio.volume = Mathf.Max((HighestVelocityFromContacts(Contact) * damageScalar) / 10.0f, 0.25f);
                             }
                             //Or Enemy is Player Two
                             else if (collision.transform.root.gameObject.name == PController.PlayerTwo.Center.transform.root.gameObject.name)
@@ -101,6 +107,9 @@ public class Punch : MonoBehaviour
                                 PController.PlayerTwo.DamagePlayer((int)(HighestVelocityFromContacts(Contact) * damageScalar));
                                 //Particle Effect
                                 PController.SplatParticleController.DisplayHitParticle(HighestVelVecFromContacts(Contact) / 2, Manager.playerColors[Manager.Player2ColorID].color, Contact[0].point);
+                                //Play random sound from array
+                                AudioController.PlayRandomSound(punchAudio, punchSounds);
+                                punchAudio.volume = Mathf.Max((HighestVelocityFromContacts(Contact) * damageScalar) / 10.0f, 0.25f);
                             }
                         Manager.JiggleEverything();
                     }
