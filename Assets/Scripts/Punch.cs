@@ -8,15 +8,17 @@ public class Punch : MonoBehaviour
 
     GameManager Manager;
 
+    int IdxNumber;
+
     public GameObject Enemy;
     public GameObject Center;
     public PlayerController PController;
 
-    public string punchInput;
-
     public float PunchForce = 3.0f;
     public float MinimumForceForDamage = 0.5f;
     public float damageScalar;
+
+    public string punchInput;
 
     public float launchSpeed;
 
@@ -27,6 +29,8 @@ public class Punch : MonoBehaviour
     {
         RB = GetComponent<Rigidbody>();
         Manager = GameManager.FindManager();
+
+        IdxNumber = (transform.root.name == "Player1") ? 1:2;
     }
     void Update()
     {
@@ -40,7 +44,7 @@ public class Punch : MonoBehaviour
         //Calculat which direction the player's Center is facing
         Vector3 PunchDirection = Center.transform.forward;//OLD:: (Enemy.transform.position - transform.position);
         //Add a force in the direction of the puch direction
-        if (/*Input.GetButtonDown(punchInput) ||*/ Input.GetButtonDown(punchInput))
+        if (/*Input.GetButtonDown(punchInput) ||*/ Manager.GetButtonDown(IdxNumber, punchInput))
             RB.AddForce(PunchForce * PunchDirection.normalized, ForceMode.Impulse);
     }
 

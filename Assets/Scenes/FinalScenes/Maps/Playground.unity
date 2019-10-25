@@ -2372,16 +2372,16 @@ PrefabInstance:
       propertyPath: TriggerModule.collisionShape0
       value: 
       objectReference: {fileID: 870045181}
-    - target: {fileID: 4881929585594779504, guid: 8ac2f1fe2fbec6c43bae0ada2ef7f87b,
-        type: 3}
-      propertyPath: YOffset
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 6640866755677012141, guid: 8ac2f1fe2fbec6c43bae0ada2ef7f87b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0aa9c230507c11f4d833fde628d118b0, type: 2}
+    - target: {fileID: 4881929585594779504, guid: 8ac2f1fe2fbec6c43bae0ada2ef7f87b,
+        type: 3}
+      propertyPath: YOffset
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac2f1fe2fbec6c43bae0ada2ef7f87b, type: 3}
 --- !u!114 &1925947364 stripped
@@ -2560,6 +2560,11 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 8159761466489222006, guid: d5b87fb12bdbce24f9148597d0e0ee82,
+        type: 3}
+      propertyPath: PController
+      value: 
+      objectReference: {fileID: 1459984216}
     - target: {fileID: 3790777012172414569, guid: d5b87fb12bdbce24f9148597d0e0ee82,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -2570,11 +2575,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 355
       objectReference: {fileID: 0}
-    - target: {fileID: 8159761466489222006, guid: d5b87fb12bdbce24f9148597d0e0ee82,
-        type: 3}
-      propertyPath: PController
-      value: 
-      objectReference: {fileID: 1459984216}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b87fb12bdbce24f9148597d0e0ee82, type: 3}
 --- !u!23 &1926413255 stripped
@@ -2824,6 +2824,11 @@ PrefabInstance:
       propertyPath: PController
       value: 
       objectReference: {fileID: 1459984216}
+    - target: {fileID: 559371884886121084, guid: 260669b5aecb5fe41a06291c578af961,
+        type: 3}
+      propertyPath: punchInput
+      value: Left_Punch
+      objectReference: {fileID: 0}
     - target: {fileID: 559371883443933079, guid: 260669b5aecb5fe41a06291c578af961,
         type: 3}
       propertyPath: Enemy
@@ -2834,6 +2839,11 @@ PrefabInstance:
       propertyPath: PController
       value: 
       objectReference: {fileID: 1459984216}
+    - target: {fileID: 559371883443933079, guid: 260669b5aecb5fe41a06291c578af961,
+        type: 3}
+      propertyPath: punchInput
+      value: Right_Punch
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 260669b5aecb5fe41a06291c578af961, type: 3}
 --- !u!1001 &1247288302964894790
@@ -3488,6 +3498,11 @@ PrefabInstance:
       propertyPath: PController
       value: 
       objectReference: {fileID: 1459984216}
+    - target: {fileID: 2518803101715120901, guid: 723c737d878f023498c360cf31c2a211,
+        type: 3}
+      propertyPath: punchInput
+      value: Left_Punch
+      objectReference: {fileID: 0}
     - target: {fileID: 2518803100980991726, guid: 723c737d878f023498c360cf31c2a211,
         type: 3}
       propertyPath: Enemy
@@ -3498,6 +3513,11 @@ PrefabInstance:
       propertyPath: PController
       value: 
       objectReference: {fileID: 1459984216}
+    - target: {fileID: 2518803100980991726, guid: 723c737d878f023498c360cf31c2a211,
+        type: 3}
+      propertyPath: punchInput
+      value: Right_Punch
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723c737d878f023498c360cf31c2a211, type: 3}
 --- !u!1001 &5044431779003529085

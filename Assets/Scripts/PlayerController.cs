@@ -103,16 +103,10 @@ public class Player
     {
         float x = 0;
         float y = 0;
-        if (playerID == 1)
-        {
-            x = Input.GetAxis("P1Horizontal");
-            y = Input.GetAxis("P1Vertical");
-        }
-        if (playerID == 2)
-        {
-            x = Input.GetAxis("P2Horizontal");
-            y = Input.GetAxis("P2Vertical");
-        }
+
+        x = Manager.GetAxis(playerID, "Horizontal");
+        y = Manager.GetAxis(playerID, "Vertical");
+
         Vector3 input = new Vector3(x, 0, y).normalized;
 
         float desiredRotation = Mathf.Atan2(input.y, input.x);

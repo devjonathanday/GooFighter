@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public enum GAMESTATE { MainMenu, ColorSelect, Rounds, EndOfRound, TransitionRound, WinScreen}
 public enum MAPS { Playground, PoolTable, Ring}
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour
     //4 = Pink
     //5 = Black
 
+    public Rewired.Player Player1RW;
+    public Rewired.Player Player2RW;
+
+
     float MaxRoundTimer = 180.0f;//Reset time for the Timer
     float RoundTimer;//Round timer
 
@@ -55,6 +60,12 @@ public class GameManager : MonoBehaviour
         ResetRoundTimer();
 
         gameObject.name = "GameManager";
+
+
+        //Rewired Player Setup
+        Player1RW = ReInput.players.GetPlayer(0);
+        Player2RW = ReInput.players.GetPlayer(1);
+
     }
 
     void Update()
@@ -265,5 +276,56 @@ public class GameManager : MonoBehaviour
             if (jellyObjects[i] != null && jellyObjects[i].gameObject.activeSelf)
                 jellyObjects[i].Jiggle();
         }
+    }
+
+
+    //Button related functions
+    public bool GetButtonDown(int _PlayerID, string _Button)
+    {
+        if(_PlayerID == 1)
+        {
+            return Player1RW.GetButtonDown(_Button);
+        }
+        else if(_PlayerID == 2)
+        {
+            return Player2RW.GetButtonDown(_Button);
+        }
+        return false;
+    }
+    public bool GetButtonUp(int _PlayerID, string _Button)
+    {
+        if (_PlayerID == 1)
+        {
+            return Player1RW.GetButtonUp(_Button);
+        }
+        else if (_PlayerID == 2)
+        {
+            return Player2RW.GetButtonUp(_Button);
+        }
+        return false;
+    }
+    public bool GetButton(int _PlayerID, string _Button)
+    {
+        if (_PlayerID == 1)
+        {
+            return Player1RW.GetButton(_Button);
+        }
+        else if (_PlayerID == 2)
+        {
+            return Player2RW.GetButton(_Button);
+        }
+        return false;
+    }
+    public float GetAxis(int _PlayerID, string _Axis)
+    {
+        if (_PlayerID == 1)
+        {
+            return Player1RW.GetAxis(_Axis);
+        }
+        else if (_PlayerID == 2)
+        {
+            return Player2RW.GetAxis(_Axis);
+        }
+        return 0;
     }
 }
