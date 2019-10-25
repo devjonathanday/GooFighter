@@ -6,7 +6,7 @@ using TMPro;
 public class PoolBall : MonoBehaviour
 {
     public enum BALLTYPE { Solid, Stripes }
-    public enum BALLCOLOR { Red,Blue,Green, Yellow, Orange, Purple, Brown, Black, White}
+    public enum BALLCOLOR { Red, Blue, Green, Yellow, Orange, Purple, Brown, Black, White }
 
     public BALLTYPE BallType;
     public BALLCOLOR BallColor;
