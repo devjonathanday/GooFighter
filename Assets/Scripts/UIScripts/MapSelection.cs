@@ -90,7 +90,8 @@ public class MapSelection : MonoBehaviour
         //CHeck to see if enough time has been inbetween inputs
         if (Time.time - LastInput > InputDelay)
         {
-            float Horizontal = (GetAxis(HorizontalAxis) != 0)?GetAxis(HorizontalAxis):GetAxis(HorizontalAxis2);
+            //float Horizontal = (GetAxis(HorizontalAxis) != 0) ? GetAxis(HorizontalAxis) : GetAxis(HorizontalAxis2);
+            float Horizontal = GetAxis(HorizontalAxis);
             if (Horizontal < 0)
             {
                 Index--;
