@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class FootFollow : MonoBehaviour
 {
+    GameManager Manager;
     Rigidbody rb;
     public float p, i, d;
 
@@ -24,6 +25,7 @@ public class FootFollow : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Manager = GameManager.FindManager();
         error = target.position - transform.position;
     }
 
@@ -50,10 +52,13 @@ public class FootFollow : MonoBehaviour
     }
     bool GetInput()
     {
-        for (int i = 0; i < inputAxes.Length; i++)
+        if(transform.root.name == "Player1")
         {
-            if (Input.GetAxis(inputAxes[i]) != 0)
-                return true;
+            return (Manager.GetAxis(1, "Horizontal") != 0 || Manager.GetAxis(1, "Vertical") != 0);
+        }
+        if (transform.root.name == "Player2")
+        {
+            return (Manager.GetAxis(2, "Horizontal") != 0 || Manager.GetAxis(2, "Vertical") != 0);
         }
         return false;
     }

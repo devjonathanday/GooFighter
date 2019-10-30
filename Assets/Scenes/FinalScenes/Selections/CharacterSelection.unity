@@ -2572,10 +2572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ab1a9da7d122942b66798bf79ca13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAxis: P2Horizontal
-  verticalAxis: P2Vertical
-  submitButton: P2MenuConfirm
-  cancelButton: P2MenuCancel
+  IndexNumber: 2
   inputDelay: 0.1
   currentSelected: {fileID: 1732226994}
   readyText: {fileID: 1157504584}
@@ -3035,6 +3032,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8eb82cb9e8c5c004ba21925f835cd04f, type: 2}
   - {fileID: 2100000, guid: e3a019a824f90ce448101bdbe328ec30, type: 2}
   - {fileID: 2100000, guid: fcf86dcafd59fdb4fa029e39b0331bc0, type: 2}
+  joystick: 0
 --- !u!4 &795394444
 Transform:
   m_ObjectHideFlags: 0
@@ -5584,10 +5582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ab1a9da7d122942b66798bf79ca13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAxis: P1Horizontal
-  verticalAxis: P1Vertical
-  submitButton: P1MenuConfirm
-  cancelButton: P1MenuCancel
+  IndexNumber: 1
   inputDelay: 0.1
   currentSelected: {fileID: 2025075042}
   readyText: {fileID: 1417387855}

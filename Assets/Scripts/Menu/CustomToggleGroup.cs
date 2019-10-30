@@ -7,10 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class CustomToggleGroup : MonoBehaviour
 {
-    public string horizontalAxis;
-    public string verticalAxis;
-    public string submitButton;
-    public string cancelButton;
+    //public string horizontalAxis;
+    //public string verticalAxis;
+    //public string submitButton;
+    //public string cancelButton;
+    public int IndexNumber;
 
     public float inputDelay;
     private float lastInputTime;
@@ -42,29 +43,29 @@ public class CustomToggleGroup : MonoBehaviour
     {
         if (!ready && Time.time - lastInputTime > inputDelay)
         {
-            if (Input.GetAxisRaw(horizontalAxis) < 0)
+            if (GM.GetAxis(IndexNumber, "Horizontal") < 0)
             {
                 currentSelected = currentSelected.SelectOnLeft();
                 lastInputTime = Time.time;
             }
-            if (Input.GetAxisRaw(horizontalAxis) > 0)
+            if (GM.GetAxis(IndexNumber, "Horizontal") > 0)
             {
                 currentSelected = currentSelected.SelectOnRight();
                 lastInputTime = Time.time;
             }
-            if (Input.GetAxisRaw(verticalAxis) < 0)
+            if (GM.GetAxis(IndexNumber, "Vertical") < 0)
             {
                 currentSelected = currentSelected.SelectOnDown();
                 lastInputTime = Time.time;
             }
-            if (Input.GetAxisRaw(verticalAxis) > 0)
+            if (GM.GetAxis(IndexNumber, "Vertical") > 0)
             {
                 currentSelected = currentSelected.SelectOnUp();
                 lastInputTime = Time.time;
             }
         }
 
-        if (Input.GetButtonDown(submitButton))
+        if (GM.GetButtonDown(IndexNumber, "Submit"))
         {
             if (!otherToggleGroup.ready || currentSelected.colorID != otherToggleGroup.currentSelected.colorID)
             {
@@ -79,7 +80,7 @@ public class CustomToggleGroup : MonoBehaviour
                 readyText.text = "ALREADY TAKEN!";
             }
         }
-        if (Input.GetButtonDown(cancelButton))
+        if (GM.GetButtonDown(IndexNumber, "Cancel"))
         {
             if (ready)
             {

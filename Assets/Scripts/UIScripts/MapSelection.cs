@@ -46,12 +46,6 @@ public class MapSelection : MonoBehaviour
     public float InputDelay;
     float LastInput;
 
-    [Header("Controls")]
-    public string HorizontalAxis;
-    public string HorizontalAxis2;
-    public string Submit, Submit2;
-    public string Cancel, Cancel2;
-
     [Header("Level Objects")]
     public List<LevelController> Levels = new List<LevelController>();
     int Index = 0;
@@ -91,7 +85,7 @@ public class MapSelection : MonoBehaviour
         if (Time.time - LastInput > InputDelay)
         {
             //float Horizontal = (GetAxis(HorizontalAxis) != 0) ? GetAxis(HorizontalAxis) : GetAxis(HorizontalAxis2);
-            float Horizontal = GetAxis(HorizontalAxis);
+            float Horizontal = GetAxis(1, "Horizontal") + GetAxis(2, "Horizontal");
             if (Horizontal < 0)
             {
                 Index--;
@@ -138,9 +132,9 @@ public class MapSelection : MonoBehaviour
         if (_Index < 0) _Index = _ListLength - 1;
         else if (_Index > _ListLength - 1) _Index = 0;
     }
-    float GetAxis(string _Axis)
+    float GetAxis(int _PlayerNumber, string _Axis)
     {
-        return Input.GetAxisRaw(_Axis);
+        return Manager.GetAxis(_PlayerNumber, _Axis);
     }
     bool GetButtonDown(string _Button)
     {
@@ -149,11 +143,11 @@ public class MapSelection : MonoBehaviour
 
     void ButtonUpdate()
     {
-        if(GetButtonDown(Cancel) || GetButtonDown(Cancel2))
+        if(Manager.GetButtonDown(1, "Cancel") || Manager.GetButtonDown(2, "Cancel"))
         {
             SceneManager.LoadScene(PreviousScene);
         }
-        if (GetButtonDown(Submit) || GetButtonDown(Cancel2))
+        if (Manager.GetButtonDown(1,"Submit") || Manager.GetButtonDown(2, "Submit"))
         {
             Manager.CurrentMap = (MAPS)System.Enum.Parse(typeof(MAPS), Levels[Index].Level.name);
             SceneManager.LoadScene(NextScene);
