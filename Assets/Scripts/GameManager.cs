@@ -314,6 +314,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MapSelection");
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public void JiggleEverything()
     {
         for (int i = 0; i < jellyObjects.Count; i++)
