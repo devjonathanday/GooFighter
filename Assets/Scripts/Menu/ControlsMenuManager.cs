@@ -61,7 +61,13 @@ public class ControlsMenuManager : MonoBehaviour
     {
         if(CurrentPage == 1)
         {
-            //Page1.transform.position = Vector3.Lerp(Page1Start, Vector3.zero, Mathf.Clamp(Time.time - LerpTimer, 0, 1));
+            Page1.transform.position = Vector3.Lerp(Page1Start, Vector3.zero, Mathf.Clamp(Time.time - LerpTimer, 0, 1));
+            Page2.transform.position = Vector3.Lerp(Page2Start, RightHidden, Mathf.Clamp(Time.time - LerpTimer, 0, 1));
+        }
+        else if (CurrentPage == 2)
+        {
+            Page1.transform.position = Vector3.Lerp(Page1Start, LeftHidden, Mathf.Clamp(Time.time - LerpTimer, 0, 1));
+            Page2.transform.position = Vector3.Lerp(Page2Start, Vector3.zero, Mathf.Clamp(Time.time - LerpTimer, 0, 1));
         }
     }
 } 
