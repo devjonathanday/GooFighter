@@ -148,6 +148,7 @@ public class MapSelection : MonoBehaviour
     {
         if(Manager.GetButtonDown(1, "Cancel") || Manager.GetButtonDown(2, "Cancel"))
         {
+            Manager.SetGameState(GAMESTATE.MainMenu);
             SceneManager.LoadScene(PreviousScene);
         }
         if (Manager.GetButtonDown(1,"Submit") || Manager.GetButtonDown(2, "Submit"))
