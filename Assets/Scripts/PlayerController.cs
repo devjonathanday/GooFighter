@@ -91,8 +91,8 @@ public class Player
     }
     void BodyUp(Vector3 _BodyUpV, Vector3 _HeadUpV)
     {
-        HeadRB.AddForce(_HeadUpV, ForceMode.Impulse);
-        CenterRB.AddForce(_BodyUpV, ForceMode.Impulse);
+        HeadRB.AddForce(_HeadUpV * Time.deltaTime * 60, ForceMode.Impulse);
+        CenterRB.AddForce(_BodyUpV * Time.deltaTime * 60, ForceMode.Impulse);
     }
 
     void Move(Vector3 moveDir)
