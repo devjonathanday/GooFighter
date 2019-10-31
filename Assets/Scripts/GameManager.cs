@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Rewired;
 
-public enum GAMESTATE { MainMenu, MapSelect, ColorSelect, Rounds, EndOfRound, TransitionRound, WinScreen}
+public enum GAMESTATE { MainMenu, Controls, MapSelect, ColorSelect, Rounds, EndOfRound, TransitionRound, WinScreen}
 public enum MAPS { Playground, PoolTable, Ring}
 
 public class GameManager : MonoBehaviour
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if(CurrentState == GAMESTATE.MapSelect)
+        if (CurrentState == GAMESTATE.MapSelect)
         {
             SceneManager.LoadScene("MapSelection");
             return;
@@ -196,7 +196,11 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("MapSelection");
             return;
         }
-
+        if (CurrentState == GAMESTATE.Controls)
+        {
+            SceneManager.LoadScene("ControlsMenu");
+            return;
+        }
     }
     public GAMESTATE GetState()
     {
@@ -310,6 +314,7 @@ public class GameManager : MonoBehaviour
     public void ResetFromWinScreen()
     {
         LastWinner = null;
+        Round = 0;
         Player1Score = 0;
         Player2Score = 0;
         SceneManager.LoadScene("MapSelection");

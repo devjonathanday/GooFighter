@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalScenes/MainMenu/MainMenu.unity
     guid: 8918b0450aa80c84a8ec2235a0840da3
   - enabled: 1
+    path: Assets/Scenes/FinalScenes/Selections/ControlsMenu.unity
+    guid: 6f17ffb81253a404f98e8e34886a54c8
+  - enabled: 1
     path: Assets/Scenes/FinalScenes/Selections/CharacterSelection.unity
     guid: 849d260714be88d48b57fefdbc9bf0b1
   - enabled: 1

@@ -58,8 +58,8 @@ public class WinPlayer : MonoBehaviour
         leftHandRB.AddForce(Vector3.up * handForce);
         rightHandRB.AddForce(Vector3.up * handForce);
 
-        if (playerNum == 1 && Input.GetButtonDown("P1MenuConfirm") ||
-            playerNum == 2 && Input.GetButtonDown("P2MenuConfirm"))
+        if (playerNum == 1 && GM.GetButtonDown(1, "Submit") ||
+            playerNum == 2 && GM.GetButtonDown(2, "Submit"))
         {
             readySymbol.SetActive(false);
             ready = true;
