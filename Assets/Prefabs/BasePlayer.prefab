@@ -397,7 +397,7 @@ MonoBehaviour:
   PunchForce: 10
   MinimumForceForDamage: 1
   damageScalar: 0.15
-  punchInput: P1RightPunch
+  punchInput: Right_Punch
   launchSpeed: 10
   punchAudio: {fileID: 0}
   punchSounds: []
@@ -703,8 +703,8 @@ MonoBehaviour:
   d: -80
   target: {fileID: 6970096432448193480}
   inputAxes:
-  - P2Horizontal
-  - P2Vertical
+  - Horizontal
+  - Vertical
   speed: 0
 --- !u!1 &6970096432148517070
 GameObject:
@@ -1118,8 +1118,8 @@ MonoBehaviour:
   d: -80
   target: {fileID: 6970096432809522706}
   inputAxes:
-  - P2Horizontal
-  - P2Vertical
+  - Horizontal
+  - Vertical
   speed: 0
 --- !u!1 &6970096432662888795
 GameObject:
@@ -1667,7 +1667,7 @@ MonoBehaviour:
   PunchForce: 10
   MinimumForceForDamage: 1
   damageScalar: 0.15
-  punchInput: P1LeftPunch
+  punchInput: Left_Punch
   launchSpeed: 10
   punchAudio: {fileID: 0}
   punchSounds: []
