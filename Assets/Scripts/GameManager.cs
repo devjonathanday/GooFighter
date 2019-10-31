@@ -160,6 +160,44 @@ public class GameManager : MonoBehaviour
             jellyObjects.Clear();
         }
     }
+    public void SetGameState(string _NewState)
+    {
+        CurrentState = (GAMESTATE)System.Enum.Parse(typeof(GAMESTATE), _NewState);
+
+        if (CurrentState == GAMESTATE.Rounds)
+        {
+            //Go to Rounds
+            SceneManager.LoadScene(CurrentMap.ToString());
+        }
+
+        //If the Current state is the end of round
+        if (CurrentState == GAMESTATE.TransitionRound)
+        {
+            CheckForWinner();
+            //NextRound
+            NextRound();
+            //Reset the current round for the next play
+
+            ResetingRound();
+
+            CheckForWinner();
+            //Resets the state to be the rounds
+            CurrentState = GAMESTATE.Rounds;
+        }
+
+        if (CurrentState == GAMESTATE.WinScreen)
+        {
+            SceneManager.LoadScene("WinScreen");
+            return;
+        }
+
+        if (CurrentState == GAMESTATE.MapSelect)
+        {
+            SceneManager.LoadScene("MapSelection");
+            return;
+        }
+
+    }
     public GAMESTATE GetState()
     {
         return CurrentState;
