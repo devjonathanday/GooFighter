@@ -16,8 +16,6 @@ public class FootFollow : MonoBehaviour
     private Vector3 errorSum;
     public Transform target;
 
-    public string[] inputAxes;
-
     [SerializeField]
     float speed;
 

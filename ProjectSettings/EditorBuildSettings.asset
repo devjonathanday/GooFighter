@@ -26,7 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScenes/WinScreen.unity
     guid: ae64f5cb2f94abf448b6537110a0787d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Marcel.unity
     guid: c3300dd2f4513c54b93a433cad44919b
   m_configObjects: {}

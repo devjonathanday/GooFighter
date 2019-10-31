@@ -7,6 +7,7 @@ public class Jellyfier : MonoBehaviour
 
     public float bounceSpeed;
     public float fallForce;
+    public float forceMultiplier = 1;
     public float stiffness;
     public float roundness;
     public float falloffMultiplier;

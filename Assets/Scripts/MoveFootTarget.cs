@@ -12,12 +12,13 @@ public class MoveFootTarget : MonoBehaviour
     [SerializeField]
     AnimationCurve walkCurveY = new AnimationCurve();
 
+    GameManager gm;
     Vector3 offset;
     float timer;
-    public string[] inputAxes;
 
     void Start()
     {
+        gm = GameManager.FindManager();
         offset = transform.localPosition;
     }
 
@@ -39,10 +40,13 @@ public class MoveFootTarget : MonoBehaviour
 
     bool GetInput()
     {
-        for (int i = 0; i < inputAxes.Length; i++)
+        if (transform.root.name == "Player1")
         {
-            if (Input.GetAxis(inputAxes[i]) != 0)
-                return true;
+            return (gm.GetAxis(1, "Horizontal") != 0 || gm.GetAxis(1, "Vertical") != 0);
+        }
+        if (transform.root.name == "Player2")
+        {
+            return (gm.GetAxis(2, "Horizontal") != 0 || gm.GetAxis(2, "Vertical") != 0);
         }
         return false;
     }
