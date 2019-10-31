@@ -394,11 +394,13 @@ MonoBehaviour:
   Enemy: {fileID: 0}
   Center: {fileID: 6970096432676692815}
   PController: {fileID: 0}
-  punchInput: P1RightPunch
   PunchForce: 10
   MinimumForceForDamage: 1
   damageScalar: 0.15
+  punchInput: P1RightPunch
   launchSpeed: 10
+  punchAudio: {fileID: 0}
+  punchSounds: []
 --- !u!114 &6970096431788577159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1662,11 +1664,13 @@ MonoBehaviour:
   Enemy: {fileID: 0}
   Center: {fileID: 6970096432676692815}
   PController: {fileID: 0}
-  punchInput: P1LeftPunch
   PunchForce: 10
   MinimumForceForDamage: 1
   damageScalar: 0.15
+  punchInput: P1LeftPunch
   launchSpeed: 10
+  punchAudio: {fileID: 0}
+  punchSounds: []
 --- !u!114 &6970096433198777450
 MonoBehaviour:
   m_ObjectHideFlags: 0

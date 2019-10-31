@@ -33,7 +33,8 @@ public class LevelController
     public void Update(float _Speed)
     {
         CurrentFrame += Time.deltaTime * _Speed;
-        Anim.Play(0, 0, CurrentFrame);
+        if(Anim)
+            Anim.Play(0, 0, CurrentFrame);
     }
 }
 
@@ -115,13 +116,15 @@ public class MapSelection : MonoBehaviour
             if (i != Index)
             {
                 Levels[i].MyImage.color = UnSelectedColor;
-                Levels[i].Anim.enabled = false;
+                if(Levels[i].Anim)
+                    Levels[i].Anim.enabled = false;
                 Levels[i].Camera.SetActive(false);
             }
             else
             {
                 Levels[_CurrentSelected].MyImage.color = SelectedColor;
-                Levels[i].Anim.enabled = true;
+                if (Levels[i].Anim)
+                    Levels[i].Anim.enabled = true;
                 Levels[i].Camera.SetActive(true);
             }
         }

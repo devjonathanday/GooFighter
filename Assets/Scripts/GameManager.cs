@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Rewired;
 
-public enum GAMESTATE { MainMenu, ColorSelect, Rounds, EndOfRound, TransitionRound, WinScreen}
+public enum GAMESTATE { MainMenu, MapSelect, ColorSelect, Rounds, EndOfRound, TransitionRound, WinScreen}
 public enum MAPS { Playground, PoolTable, Ring}
 
 public class GameManager : MonoBehaviour
@@ -136,6 +136,13 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("WinScreen");
             return;
         }
+
+        if(CurrentState == GAMESTATE.MapSelect)
+        {
+            SceneManager.LoadScene("MapSelection");
+            return;
+        }
+
     }
     public void SetGameState(GAMESTATE _NewState, int _PlayerNumber)
     {
