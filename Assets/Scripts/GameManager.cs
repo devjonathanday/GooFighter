@@ -309,6 +309,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetFromWinScreen()
     {
+        LastWinner = null;
         Player1Score = 0;
         Player2Score = 0;
         SceneManager.LoadScene("MapSelection");
