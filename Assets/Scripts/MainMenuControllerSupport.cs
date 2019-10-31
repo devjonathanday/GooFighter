@@ -78,4 +78,17 @@ public class MainMenuControllerSupport : MonoBehaviour
     {
         MenuStates += _Amount;
     }
+
+
+
+
+    public void GrowBigPlay()
+    {
+        MenuStates = 1;
+    }
+    public void GrowBigQuit()
+    {
+        MenuStates = 0;
+    }
+
 }
