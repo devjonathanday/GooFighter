@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: e3ed0e8da0c02fb44aea9e80be671188, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 63c686a9177bfce44a49a88f77c73343, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3500668, g: 0.44915104, b: 0.5880307, a: 1}
+  m_IndirectSpecularColor: {r: 0.35259, g: 0.3995394, b: 0.35259, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1749,6 +1749,7 @@ GameObject:
   - component: {fileID: 278174134}
   - component: {fileID: 278174133}
   - component: {fileID: 278174132}
+  - component: {fileID: 278174135}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1820,6 +1821,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &278174135
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278174131}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: e3ed0e8da0c02fb44aea9e80be671188, type: 2}
 --- !u!1 &416101976
 GameObject:
   m_ObjectHideFlags: 0
@@ -3294,6 +3304,7 @@ GameObject:
   - component: {fileID: 1004172524}
   - component: {fileID: 1004172523}
   - component: {fileID: 1004172522}
+  - component: {fileID: 1004172526}
   m_Layer: 0
   m_Name: PlaygroundCamera
   m_TagString: Untagged
@@ -3384,6 +3395,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 11.860001, y: -117.41, z: 0}
+--- !u!45 &1004172526
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004172521}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: e3ed0e8da0c02fb44aea9e80be671188, type: 2}
 --- !u!1 &1055849985 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3946330434830790362, guid: 2b775b9cca7e8b64db0c5b86ad816e43,
@@ -3710,13 +3730,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338082227}
-  m_LocalRotation: {x: -0.23714738, y: 0.6311745, z: -0.21154788, w: -0.7075503}
+  m_LocalRotation: {x: -0.21575445, y: 0.63880384, z: -0.18759689, w: -0.7142739}
   m_LocalPosition: {x: -193.78093, y: 2.1880608, z: -69.91054}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 11.860001, y: -117.41, z: 0}
+  m_LocalEulerAnglesHint: {x: 33.222, y: -83.772, z: -0.52500004}
 --- !u!45 &1338082232
 Skybox:
   m_ObjectHideFlags: 0
