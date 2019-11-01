@@ -147,6 +147,11 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("ControlsMenu");
             return;
         }
+        if (CurrentState == GAMESTATE.MainMenu)
+        {
+            SceneManager.LoadScene("MainMenu");
+            return;
+        }
     }
     public void SetGameState(GAMESTATE _NewState, int _PlayerNumber)
     {
