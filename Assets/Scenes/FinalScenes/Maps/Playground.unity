@@ -1704,7 +1704,7 @@ MonoBehaviour:
     CenterRB: {fileID: 2518803100504388122}
     HeadRB: {fileID: 2518803101143100168}
   HeadForce: {x: 0, y: 1.5, z: 0}
-  BodyForce: {x: 0, y: 2, z: 0}
+  BodyForce: {x: 0, y: 1, z: 0}
   Drag: 0.9
   SplatParticleController: {fileID: 1925947364}
 --- !u!4 &1459984217
@@ -2814,21 +2814,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 559371884886121084, guid: 260669b5aecb5fe41a06291c578af961,
-        type: 3}
-      propertyPath: Enemy
-      value: 
-      objectReference: {fileID: 2518803101505525210}
-    - target: {fileID: 559371884886121084, guid: 260669b5aecb5fe41a06291c578af961,
-        type: 3}
-      propertyPath: PController
-      value: 
-      objectReference: {fileID: 1459984216}
-    - target: {fileID: 559371884886121084, guid: 260669b5aecb5fe41a06291c578af961,
-        type: 3}
-      propertyPath: punchInput
-      value: Left_Punch
-      objectReference: {fileID: 0}
     - target: {fileID: 559371883443933079, guid: 260669b5aecb5fe41a06291c578af961,
         type: 3}
       propertyPath: Enemy
@@ -2843,6 +2828,21 @@ PrefabInstance:
         type: 3}
       propertyPath: punchInput
       value: Right_Punch
+      objectReference: {fileID: 0}
+    - target: {fileID: 559371884886121084, guid: 260669b5aecb5fe41a06291c578af961,
+        type: 3}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 2518803101505525210}
+    - target: {fileID: 559371884886121084, guid: 260669b5aecb5fe41a06291c578af961,
+        type: 3}
+      propertyPath: PController
+      value: 
+      objectReference: {fileID: 1459984216}
+    - target: {fileID: 559371884886121084, guid: 260669b5aecb5fe41a06291c578af961,
+        type: 3}
+      propertyPath: punchInput
+      value: Left_Punch
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 260669b5aecb5fe41a06291c578af961, type: 3}
@@ -3488,21 +3488,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2518803101715120901, guid: 723c737d878f023498c360cf31c2a211,
-        type: 3}
-      propertyPath: Enemy
-      value: 
-      objectReference: {fileID: 2067729695}
-    - target: {fileID: 2518803101715120901, guid: 723c737d878f023498c360cf31c2a211,
-        type: 3}
-      propertyPath: PController
-      value: 
-      objectReference: {fileID: 1459984216}
-    - target: {fileID: 2518803101715120901, guid: 723c737d878f023498c360cf31c2a211,
-        type: 3}
-      propertyPath: punchInput
-      value: Left_Punch
-      objectReference: {fileID: 0}
     - target: {fileID: 2518803100980991726, guid: 723c737d878f023498c360cf31c2a211,
         type: 3}
       propertyPath: Enemy
@@ -3517,6 +3502,21 @@ PrefabInstance:
         type: 3}
       propertyPath: punchInput
       value: Right_Punch
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518803101715120901, guid: 723c737d878f023498c360cf31c2a211,
+        type: 3}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 2067729695}
+    - target: {fileID: 2518803101715120901, guid: 723c737d878f023498c360cf31c2a211,
+        type: 3}
+      propertyPath: PController
+      value: 
+      objectReference: {fileID: 1459984216}
+    - target: {fileID: 2518803101715120901, guid: 723c737d878f023498c360cf31c2a211,
+        type: 3}
+      propertyPath: punchInput
+      value: Left_Punch
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723c737d878f023498c360cf31c2a211, type: 3}

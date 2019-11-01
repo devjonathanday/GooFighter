@@ -301,7 +301,7 @@ ConfigurableJoint:
   m_XMotion: 0
   m_YMotion: 1
   m_ZMotion: 0
-  m_AngularXMotion: 2
+  m_AngularXMotion: 1
   m_AngularYMotion: 0
   m_AngularZMotion: 2
   m_LinearLimitSpring:
@@ -394,7 +394,7 @@ MonoBehaviour:
   Enemy: {fileID: 0}
   Center: {fileID: 6970096432676692815}
   PController: {fileID: 0}
-  PunchForce: 10
+  PunchForce: 7
   MinimumForceForDamage: 1
   damageScalar: 0.15
   punchInput: Right_Punch
@@ -702,9 +702,6 @@ MonoBehaviour:
   i: 0
   d: -80
   target: {fileID: 6970096432448193480}
-  inputAxes:
-  - Horizontal
-  - Vertical
   speed: 0
 --- !u!1 &6970096432148517070
 GameObject:
@@ -956,9 +953,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  inputAxes:
-  - P2Horizontal
-  - P2Vertical
 --- !u!1 &6970096432531889245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,9 +1111,6 @@ MonoBehaviour:
   i: 0
   d: -80
   target: {fileID: 6970096432809522706}
-  inputAxes:
-  - Horizontal
-  - Vertical
   speed: 0
 --- !u!1 &6970096432662888795
 GameObject:
@@ -1311,9 +1302,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  inputAxes:
-  - P2Horizontal
-  - P2Vertical
 --- !u!1 &6970096432874082552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,7 +1559,7 @@ ConfigurableJoint:
   m_XMotion: 0
   m_YMotion: 1
   m_ZMotion: 0
-  m_AngularXMotion: 2
+  m_AngularXMotion: 1
   m_AngularYMotion: 0
   m_AngularZMotion: 2
   m_LinearLimitSpring:
@@ -1664,7 +1652,7 @@ MonoBehaviour:
   Enemy: {fileID: 0}
   Center: {fileID: 6970096432676692815}
   PController: {fileID: 0}
-  PunchForce: 10
+  PunchForce: 7
   MinimumForceForDamage: 1
   damageScalar: 0.15
   punchInput: Left_Punch
