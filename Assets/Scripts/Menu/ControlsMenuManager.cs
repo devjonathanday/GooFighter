@@ -38,7 +38,11 @@ public class ControlsMenuManager : MonoBehaviour
 
     private void Update()
     {
-        SwitchBetweenPages();
+        //SwitchBetweenPages();
+        if(Manager.GetButtonDown(1, "Cancel") || Manager.GetButtonDown(2, "Cancel"))
+        {
+            Manager.SetGameState(GAMESTATE.MainMenu);
+        }
     }
 
     void SwitchBetweenPages()
